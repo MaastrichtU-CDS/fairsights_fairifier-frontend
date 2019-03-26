@@ -16,7 +16,7 @@ install-angular-cli:
   script:
     - npm update -g @angular/cli
     
-install-angular-dependencies
+install-angular-dependencies:
   stage: prepare
   script:
   - npm update
