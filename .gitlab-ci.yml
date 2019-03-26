@@ -11,14 +11,10 @@ stages:
   - test
   - build
 
-install-angular-cli:
-  stage: prepare
-  script:
-    - npm update -g @angular/cli
-    
 install-angular-dependencies:
   stage: prepare
   script:
+  - npm install @angular/cli
   - npm update
 
 perform-tests:
