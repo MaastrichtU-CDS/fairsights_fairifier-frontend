@@ -30,7 +30,5 @@ perform-tests:
 
 build:
   stage: build
-  dependencies: 
-    - install
   script: 
     - ng build --env=prod
