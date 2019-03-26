@@ -1,0 +1,33 @@
+image: node:latest
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+  - node_modules/
+
+stages:
+  - fetch
+  - test
+  - build
+
+install-dependencies:
+  - stage: fetch
+  - script:
+  - npm install
+
+perform-tests:
+  stage: test
+  dependencies: 
+    - install-dependencies
+  script:
+    - ng test
+  only:
+    - master
+
+build:
+  stage: build
+  dependencies: 
+    - install-dependencies
+  script: 
+    - ng build --env=prod
