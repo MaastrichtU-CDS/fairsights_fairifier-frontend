@@ -12,8 +12,8 @@ stages:
   - build
 
 install-dependencies:
-  - stage: fetch
-  - script:
+  stage: fetch
+  script:
   - npm install
 
 perform-tests:
