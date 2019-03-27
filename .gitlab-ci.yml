@@ -14,7 +14,7 @@ stages:
 install-angular-dependencies:
   stage: prepare
   script:
-  - npm install @angular/cli
+  - npm install -g @angular/cli
   - npm update
 
 perform-tests:
