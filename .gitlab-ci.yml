@@ -11,10 +11,11 @@ stages:
   - test
   - build
 
-install-angular-dependencies:
+install-dependencies:
   stage: prepare
   script:
   - npm update @angular/cli
+  - npm update puppeteer
   - npm update
 
 perform-tests:
