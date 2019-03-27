@@ -26,7 +26,8 @@ test:
     - node_modules/.bin/ng test
     - node_modules/.bin/ng e2e
   only:
-    - master, merge-request
+    - master
+    - merge_requests
 
 build:
   stage: build
