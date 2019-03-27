@@ -14,17 +14,17 @@ stages:
 install-angular-dependencies:
   stage: prepare
   script:
-  - npm install -g @angular/cli
+  - npm update @angular/cli
   - npm update
 
 perform-tests:
   stage: test
   script:
-    - ng test
+    - node_modules/.bin/ng test
   only:
     - master
 
 build:
   stage: build
   script: 
-    - ng build --env=prod
+    - node_modules/.bin/ng build --env=prod
