@@ -38,4 +38,4 @@ build:
       - node_modules/
     policy: pull
   script: 
-    - node_modules/.bin/ng build --env=prod
+    - node_modules/.bin/ng build --prod
