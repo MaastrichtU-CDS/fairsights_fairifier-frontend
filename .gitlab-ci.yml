@@ -34,6 +34,8 @@ test:
 build:
   stage: build
   cache: 
+    paths:
+      - node_modules/
     policy: pull
   script: 
     - node_modules/.bin/ng build --env=prod
