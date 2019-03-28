@@ -17,23 +17,25 @@ export class MappingComponent implements OnInit {
   allformats = FORMATS;
   selectedFormat = pickedFormat;
   mappingFile: any;
+  useChosenFormat = false;
 
   downloadMapping() {
     this.mappingService.mappingDownload(this.selectedFormat[0].shortName);
   }
   
   mappingFileUpload($event) {
-    this.mappingFile = $event.target.files[0];
-    console.log(this.mappingFile)
-    
+    this.mappingFile = $event.target.files[0]; 
   }
 
   mappingUpload(){
     if (this.mappingFile != undefined)
     {
-      var chosenFormat = ""
-      this.mappingService.uploadMapping(this.mappingFile, chosenFormat)
-      
+      if (this.useChosenFormat == true){
+      this.mappingService.uploadMapping(this.mappingFile, this.selectedFormat[0].shortName);
+      }
+      else{
+        this.mappingService.uploadMapping(this.mappingFile, "")
+      }
     }
     else{
       console.log("Please choose a file to upload")
@@ -42,5 +44,9 @@ export class MappingComponent implements OnInit {
 
   formatChanged(newFormat){
     this.selectedFormat = this.allformats.filter(function(Format) { return Format.shortName === newFormat})
+  }
+
+  toggleChoosenFormat(e){
+    this.useChosenFormat = e.target.checked;
   }
 }
