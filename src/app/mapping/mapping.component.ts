@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MappingService } from '../service/mapping.service';
+import { FORMATS, pickedFormat } from '../model/allformats';
 
 @Component({
   selector: 'app-mapping',
@@ -12,11 +13,13 @@ export class MappingComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
+  allformats = FORMATS;
+  selectedFormat = pickedFormat;
   mappingFile: any;
 
   downloadMapping() {
-    this.mappingService.mappingDownload("N3");
+    this.mappingService.mappingDownload(this.selectedFormat[0].shortName);
   }
   
   mappingFileUpload($event) {
@@ -35,5 +38,9 @@ export class MappingComponent implements OnInit {
     else{
       console.log("Please choose a file to upload")
     }
+  }
+
+  formatChanged(newFormat){
+    this.selectedFormat = this.allformats.filter(function(Format) { return Format.shortName === newFormat})
   }
 }
