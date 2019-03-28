@@ -6,7 +6,6 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class MappingService {
-
   constructor(private http: HttpClient) { }
 
   mappingDownload(fileType) {
@@ -52,4 +51,26 @@ export class MappingService {
     URL.revokeObjectURL(objectUrl);
     }
   }
+
+  uploadMapping(mappingFile, currentFormat){
+    var extra_Url = '/mapping/upload'
+    if (currentFormat != ""){
+      extra_Url = extra_Url + '?format=' + currentFormat
+    }
+    var formData = new FormData();
+    formData.append('file', mappingFile)
+
+    var url = environment.apiUrl + extra_Url
+
+    return this.http.put(url, formData)
+      .subscribe(
+        data => {
+          console.log("Uploading mapping is succesful ", data)
+        },
+
+        error => {
+          console.log("Error ", error);
+        }
+      )
+    }
 }

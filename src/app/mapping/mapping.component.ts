@@ -13,8 +13,27 @@ export class MappingComponent implements OnInit {
   ngOnInit() {
   }
 
+  mappingFile: any;
+
   downloadMapping() {
     this.mappingService.mappingDownload("N3");
   }
+  
+  mappingFileUpload($event) {
+    this.mappingFile = $event.target.files[0];
+    console.log(this.mappingFile)
+    
+  }
 
+  mappingUpload(){
+    if (this.mappingFile != undefined)
+    {
+      var chosenFormat = ""
+      this.mappingService.uploadMapping(this.mappingFile, chosenFormat)
+      
+    }
+    else{
+      console.log("Please choose a file to upload")
+    }
+  }
 }

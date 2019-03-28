@@ -1,2 +1,10 @@
 <button (click)="downloadMapping()" class="button">Download Current Mapping</button>
 <br>
+<br>
+
+<button (click)="mappingUpload()" class="button">Upload Mapping</button>
+<br>
+<label for="fileInput" class="btn btn-secondary">
+</label>
+<input type="file"  id="fileInput" (change)="mappingFileUpload($event)"/>
+<br>
