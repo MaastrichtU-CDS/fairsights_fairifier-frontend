@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MappingService } from '../service/mapping.service';
 
 @Component({
   selector: 'app-mapping',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MappingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mappingService: MappingService) { }
 
   ngOnInit() {
+  }
+
+  downloadMapping() {
+    this.mappingService.mappingDownload("N3");
   }
 
 }
