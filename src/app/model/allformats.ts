@@ -8,7 +8,7 @@ export const FORMATS: Format[] = [
 	{ fullName: "N-Triples", shortName: "NTRIPLES", extension: ".nt" },
     { fullName: "RDFa", shortName: "RDFA", extension: ".rdfa"},
 	{ fullName: "RDF/JSON", shortName: "RDFJSON", extension: ".rj"},
-	{ fullName: "RDF/XML", shortName: "RDFX", extension: ".rdf"},
+	{ fullName: "RDF/XML", shortName: "RDFXML", extension: ".rdf"},
 	{ fullName: "TriG", shortName: "TRIG", extension: ".trig"},
 	{ fullName: "TriX", shortName: "TRIX", extension: ".xml"},
 	{ fullName: "Turtle", shortName: "TURTLE", extension: ".ttl"} ,
