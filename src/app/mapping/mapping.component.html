@@ -1,18 +1,23 @@
 <div class="container-fluid" style="margin-top: 70px;">
         <div class="row justify-content-around">
             <div class="col-xs-6">
-                <button (click)="downloadMapping()" class="button">Download Current Mapping</button>
+                <button type="button" class="btn btn-secondary" (click)="downloadMapping()">Download Current Mapping</button>
                 <br>
                 <br>
-    
-                <select (change)="formatChanged($event.target.value)">
-                    <option *ngFor="let Format of allformats" 
-                    [selected]="Format.fullName == selectedFormat[0].fullName"
-                    [value]="Format.shortName">
-                        {{Format.fullName}} ({{Format.extension}})  
-                    </option>
-                </select>
-                <br>
+				
+                <div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="inputGroupSelect01">Options</label>
+					</div>
+					<select (change)="formatChanged($event.target.value)">
+						<option *ngFor="let Format of allformats" 
+						[selected]="Format.fullName == selectedFormat[0].fullName"
+						[value]="Format.shortName">
+							{{Format.fullName}} ({{Format.extension}})  
+						</option>
+					</select>
+				</div>
+ 
     
                 <label class="container"> 
                     <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
@@ -22,7 +27,7 @@
                 </label> 
             </div>
             <div class="col-xs-6" >
-                <button (click)="mappingUpload()" class="button">Upload Mapping</button>
+                <button type="button" class="btn btn-secondary" (click)="mappingUpload()">Upload Mapping</button>
                 <br>
                 <br>
                 <label for="fileInput" class="btn btn-secondary">
