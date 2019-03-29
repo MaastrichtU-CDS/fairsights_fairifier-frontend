@@ -1,30 +1,33 @@
-<button (click)="downloadMapping()" class="button">Download Current Mapping</button>
-<br>
-<br>
-
-<select (change)="formatChanged($event.target.value)">
-    <option *ngFor="let Format of allformats" 
-    [selected]="Format.fullName == selectedFormat[0].fullName"
-    [value]="Format.shortName">
-        {{Format.fullName}} ({{Format.extension}})  
-    </option>
-</select>
-<br>
-
-<label class="container"> 
-    <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
-        Use this format for uploading?
+<div class="container-fluid" style="margin-top: 70px;">
+        <div class="row justify-content-around">
+            <div class="col-xs-6">
+                <button (click)="downloadMapping()" class="button">Download Current Mapping</button>
+                <br>
+                <br>
     
-      <span class="checkmark"></span>
-</label> 
-<br>
-<br>
-<br>
-
-<button (click)="mappingUpload()" class="button">Upload Mapping</button>
-<br>
-
-<label for="fileInput" class="btn btn-secondary">
-</label>
-<input type="file"  id="fileInput" (change)="mappingFileUpload($event)"/>
-<br>
+                <select (change)="formatChanged($event.target.value)">
+                    <option *ngFor="let Format of allformats" 
+                    [selected]="Format.fullName == selectedFormat[0].fullName"
+                    [value]="Format.shortName">
+                        {{Format.fullName}} ({{Format.extension}})  
+                    </option>
+                </select>
+                <br>
+    
+                <label class="container"> 
+                    <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
+                        Use this format for uploading?
+                    
+                    <span class="checkmark"></span>
+                </label> 
+            </div>
+            <div class="col-xs-6" >
+                <button (click)="mappingUpload()" class="button">Upload Mapping</button>
+                <br>
+                <br>
+                <label for="fileInput" class="btn btn-secondary">
+                </label>
+                <input type="file"  id="fileInput" (change)="mappingFileUpload($event)"/>
+            </div>    
+        </div>
+    </div>
