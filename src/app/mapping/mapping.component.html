@@ -20,12 +20,18 @@
  
     
                 <label class="container"> 
-                    <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
-                        Use this format for uploading?
-                    
-                    <span class="checkmark"></span>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
+								Use this format for uploading?
+							</div>
+						</div>
+					</div>
                 </label> 
+				
             </div>
+			
         <div class="col-xs-6" >
             <button type="button" class="btn btn-secondary" (click)="mappingUpload()">Upload Mapping</button>
             <br>
