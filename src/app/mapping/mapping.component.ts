@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MappingService } from '../service/mapping.service';
 import { FORMATS, pickedFormat } from '../model/allformats';
 
@@ -14,6 +14,8 @@ export class MappingComponent implements OnInit {
   ngOnInit() {
   }
   
+  @ViewChild('labelImport')
+  labelImport: ElementRef;
   allformats = FORMATS;
   selectedFormat = pickedFormat;
   mappingFile: any;
@@ -25,6 +27,9 @@ export class MappingComponent implements OnInit {
   
   mappingFileUpload($event) {
     this.mappingFile = $event.target.files[0]; 
+	
+	  this.labelImport.nativeElement.innerText 
+	    = this.mappingFile.name;
   }
 
   mappingUpload(){
