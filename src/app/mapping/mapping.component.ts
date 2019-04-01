@@ -16,6 +16,8 @@ export class MappingComponent implements OnInit {
   
   @ViewChild('labelImport')
   labelImport: ElementRef;
+  @ViewChild('labelUploadStatus')
+  labelUploadStatus: ElementRef;
   allformats = FORMATS;
   selectedFormat = pickedFormat;
   mappingFile: any;
@@ -28,8 +30,11 @@ export class MappingComponent implements OnInit {
   mappingFileUpload($event) {
     this.mappingFile = $event.target.files[0]; 
 	
-	  this.labelImport.nativeElement.innerText 
+	this.labelImport.nativeElement.innerText 
 	    = this.mappingFile.name;
+		
+	this.labelUploadStatus.nativeElement.innerText 
+    = "";
   }
 
   mappingUpload(){
@@ -43,7 +48,8 @@ export class MappingComponent implements OnInit {
       }
     }
     else{
-      console.log("Please choose a file to upload")
+      this.labelUploadStatus.nativeElement.innerText 
+      = "Please choose a file to upload";
     }
   }
 

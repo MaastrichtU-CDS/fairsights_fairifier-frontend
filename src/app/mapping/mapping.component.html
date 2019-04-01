@@ -4,7 +4,6 @@
                 <button type="button" class="btn btn-secondary" (click)="downloadMapping()">Download Current Mapping</button>
                 <br>
                 <br>
-				
                 <div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<label class="input-group-text" for="inputGroupSelect01">Options</label>
@@ -18,7 +17,6 @@
 					</select>
 				</div>
  
-    
                 <label class="container"> 
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -37,13 +35,16 @@
             <br>
             <br>
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-
             <div class="custom-file">
-                    <input type="file" class="custom-file-input" multiple formControlName="importFile" id="importFile" (change)="mappingFileUpload($event)">
-                    <label class="custom-file-label" #labelImport for="importFile"><i class="fas fa-search"></i> Choose file</label>
-                </div>
+                <input type="file" class="custom-file-input" multiple formControlName="importFile" id="importFile" (change)="mappingFileUpload($event)">
+                <label class="custom-file-label" #labelImport for="importFile"><i class="fas fa-search"></i> Choose file</label>
+            </div>
+			
+			<br>
+			
+			<div>
+			    <label #labelUploadStatus></label>
+			</div>
         </div>   
-        </div>
     </div>
+</div>
