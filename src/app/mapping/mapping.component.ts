@@ -11,7 +11,7 @@ import { FORMATS, pickedFormat } from '../model/allformats';
 
 export class MappingComponent implements OnInit {
   constructor(private mappingService: MappingService,
-              private messageService: MessageService) { }
+              public messageService: MessageService) { }
 
   ngOnInit() {
   }
