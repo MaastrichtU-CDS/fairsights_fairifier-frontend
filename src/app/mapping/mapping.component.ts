@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MappingService } from '../service/mapping.service';
+import { MessageService } from '../service/message.service';
 import { FORMATS, pickedFormat } from '../model/allformats';
 
 @Component({
@@ -7,17 +8,16 @@ import { FORMATS, pickedFormat } from '../model/allformats';
   templateUrl: './mapping.component.html',
   styleUrls: ['./mapping.component.css']
 })
-export class MappingComponent implements OnInit {
 
-  constructor(private mappingService: MappingService) { }
+export class MappingComponent implements OnInit {
+  constructor(private mappingService: MappingService,
+              private messageService: MessageService) { }
 
   ngOnInit() {
   }
   
   @ViewChild('labelImport')
   labelImport: ElementRef;
-  @ViewChild('labelUploadStatus')
-  labelUploadStatus: ElementRef;
   allformats = FORMATS;
   selectedFormat = pickedFormat;
   mappingFile: any;
@@ -30,11 +30,10 @@ export class MappingComponent implements OnInit {
   mappingFileUpload($event) {
     this.mappingFile = $event.target.files[0]; 
 	
-	this.labelImport.nativeElement.innerText 
+	  this.labelImport.nativeElement.innerText 
 	    = this.mappingFile.name;
 		
-	this.labelUploadStatus.nativeElement.innerText 
-    = "";
+    this.messageService.changeMessage("");
   }
 
   mappingUpload(){
@@ -48,8 +47,7 @@ export class MappingComponent implements OnInit {
       }
     }
     else{
-      this.labelUploadStatus.nativeElement.innerText 
-      = "Please choose a file to upload";
+      this.messageService.changeMessage("Please choose a file to upload");
     }
   }
 

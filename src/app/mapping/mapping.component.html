@@ -42,9 +42,7 @@
 			
 			<br>
 			
-			<div>
-			    <label #labelUploadStatus></label>
-			</div>
+			<div *ngFor='let message of messageService.messages'> {{message}} </div>
         </div>   
     </div>
 </div>

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { MessageService } from '../service/message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MappingService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private messageservice: MessageService) { }
 
   mappingDownload(fileType) {
     var extra_Url = '/mapping/download?format=' + fileType
@@ -24,12 +26,13 @@ export class MappingService {
       response => (
         contentDisposition = response.headers.get('content-disposition'),
         filename = contentDisposition.split(';')[1].split('filename')[1].split('=')[1].trim(),
-        console.log("Downloading mapping is succesful "),
+        this.messageservice.changeMessage("Downloading mapping is succesful"),
         this.downloadFile(response.body, filename))
       ),
 
       error => (
-        console.log("Error: ", error)
+        console.log("Error: ", error),
+        this.messageservice.changeMessage("Downloading mapping is unsuccesful Error: " + error.message)
       )
   }
 
@@ -65,11 +68,13 @@ export class MappingService {
     return this.http.put(url, formData)
       .subscribe(
         data => {
-          console.log("Uploading mapping is succesful ", data)
+          console.log("Uploading mapping is succesful ", data),
+          this.messageservice.changeMessage("Uploading mapping is succesful")
         },
 
         error => {
-          console.log("Error ", error);
+          console.log("Error ", error),
+          this.messageservice.changeMessage("Uploading mapping is unsuccesful. Error: " + error.message);
         }
       )
     }
