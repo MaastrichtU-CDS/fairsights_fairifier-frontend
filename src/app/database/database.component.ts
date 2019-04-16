@@ -11,6 +11,7 @@ export class DatabaseComponent implements OnInit {
   constructor(private messageService: MessageService) { }
 
   addDatabase() {
+    console.log('Database Added'),
     this.messageService.changeMessage('Database Added');
   }
 
