@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../service/message.service';
 
 @Component({
   selector: 'app-ontology',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OntologyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   ngOnInit() {
+    this.messageService.changeMessage('');
   }
+
+  uploadOntology() {
+    console.log("Ontology Uploaded"),
+    this.messageService.changeMessage('Ontology Uploaded')
+  }
+
+  urlChanged(url) {
+    console.log('url changed'),
+    this.messageService.changeMessage('url changed')
+  } 
 
 }
