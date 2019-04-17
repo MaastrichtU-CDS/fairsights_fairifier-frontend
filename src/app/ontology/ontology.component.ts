@@ -8,7 +8,7 @@ import { MessageService } from '../service/message.service';
 })
 export class OntologyComponent implements OnInit {
 
-  constructor(private messageService: MessageService) { }
+  constructor(public messageService: MessageService) { }
 
   ngOnInit() {
     this.messageService.changeMessage('');

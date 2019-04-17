@@ -8,7 +8,7 @@ import { MessageService } from '../service/message.service';
 })
 export class DatabaseComponent implements OnInit {
 
-  constructor(private messageService: MessageService) { }
+  constructor(public messageService: MessageService) { }
 
   addDatabase() {
     console.log('Database Added'),

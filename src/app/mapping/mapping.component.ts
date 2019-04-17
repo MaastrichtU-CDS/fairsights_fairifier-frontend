@@ -8,7 +8,7 @@ import { MessageService } from '../service/message.service';
 })
 export class MappingComponent implements OnInit {
 
-  constructor(private messageService: MessageService) { }
+  constructor(public messageService: MessageService) { }
 
   @ViewChild('labelImport')
   labelImport: ElementRef;

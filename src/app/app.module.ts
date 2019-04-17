@@ -10,6 +10,7 @@ import { DatabaseComponent } from './database/database.component';
 import { ValidateComponent } from './validate/validate.component';
 import { EditComponent } from './edit/edit.component';
 import { ResultComponent } from './result/result.component';
+import { MessageService } from './service/message.service';
 
 @NgModule({
   declarations: [
