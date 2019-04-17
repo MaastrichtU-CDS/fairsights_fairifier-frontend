@@ -8,12 +8,32 @@
               <input type="url2" class="form-control" id="inputUrlOntology" placeholder="Ontology Url" (change)=urlChanged($event.srcElement.value)>
           </div>
         </div>
-        
+
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" multiple formControlName="importFile" id="importFile" (change)="ontologyFileUpload()">
+          <label class="custom-file-label"><i class="fas fa-search"></i> Choose file</label>
+      </div>
+
+      <br>
+      <Br>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Format</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" (change)="formatChanged()">
+        </select>
+    </div>
+      
         <button type="button" class="btn btn-secondary" (click)="uploadOntology()">Upload Ontology</button>
-         <br>
+        
+        
+        <br>
         {{messageService.testString}}
 
       </div>
+
+      
 
       <div class="col-xs-6" >
         

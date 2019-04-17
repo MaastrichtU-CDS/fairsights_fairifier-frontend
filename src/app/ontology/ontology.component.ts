@@ -24,4 +24,14 @@ export class OntologyComponent implements OnInit {
     this.messageService.changeMessage('url changed');
   }
 
+
+  ontologyFileUpload() {
+    console.log('Ontology File Upload');
+    this.messageService.changeMessage('Ontology File Upload');
+  }
+
+  formatChanged() {
+    
+  }
+
 }
