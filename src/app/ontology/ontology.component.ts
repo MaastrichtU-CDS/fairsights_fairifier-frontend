@@ -15,13 +15,13 @@ export class OntologyComponent implements OnInit {
   }
 
   uploadOntology() {
-    console.log("Ontology Uploaded"),
-    this.messageService.changeMessage('Ontology Uploaded')
+    console.log('Ontology Uploaded'),
+    this.messageService.changeMessage('Ontology Uploaded');
   }
 
   urlChanged(url) {
     console.log('url changed'),
-    this.messageService.changeMessage('url changed')
-  } 
+    this.messageService.changeMessage('url changed');
+  }
 
 }

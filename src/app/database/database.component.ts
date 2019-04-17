@@ -16,28 +16,28 @@ export class DatabaseComponent implements OnInit {
   }
 
   formatChanged() {
-    console.log("Format Changed"),
-    this.messageService.changeMessage('Format Changed') 
+    console.log('Format Changed'),
+    this.messageService.changeMessage('Format Changed');
   }
 
-  nameChanged(newName){
+  nameChanged(newName) {
     console.log('Name Changed'),
-    this.messageService.changeMessage('Name Changed')
+    this.messageService.changeMessage('Name Changed');
   }
 
-  urlChanged(newUrl){
+  urlChanged(newUrl) {
     console.log('Url Changed'),
-    this.messageService.changeMessage('Url Changed')
+    this.messageService.changeMessage('Url Changed');
   }
 
-  usernameChanged(newUsername){
+  usernameChanged(newUsername) {
     console.log('Username Changed'),
-    this.messageService.changeMessage('Username Changed')
+    this.messageService.changeMessage('Username Changed');
   }
 
-  passwordChanged(newPassword){
+  passwordChanged(newPassword) {
     console.log('Password Changed'),
-    this.messageService.changeMessage('Password Changed')
+    this.messageService.changeMessage('Password Changed');
   }
 
   ngOnInit() {
