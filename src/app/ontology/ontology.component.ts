@@ -8,7 +8,7 @@ import { MessageService } from '../service/message.service';
 })
 export class OntologyComponent implements OnInit {
 
-  constructor(public messageService: MessageService,) { }
+  constructor(public messageService: MessageService) { }
 
   useChosenFormat = false;
   inputStatus = null;
@@ -33,19 +33,19 @@ export class OntologyComponent implements OnInit {
   }
 
   toggleChoosenFormat(formatYN) {
-    this.useChosenFormat = formatYN.target.checked
-    console.log(this.useChosenFormat)
-    this.messageService.changeMessage('Format is now: ' + this.useChosenFormat)
+    this.useChosenFormat = formatYN.target.checked;
+    console.log(this.useChosenFormat);
+    this.messageService.changeMessage('Format is now: ' + this.useChosenFormat);
   }
 
-  toggleInput(status){
+  toggleInput(status) {
     this.inputStatus = status;
-    console.log(this.inputStatus)
-    this.messageService.changeMessage("Type of input is now: " + this.inputStatus)
+    console.log(this.inputStatus);
+    this.messageService.changeMessage('Type of input is now: ' + this.inputStatus);
   }
 
   formatChanged() {
-    console.log("Format Changed")
-    this.messageService.changeMessage("Format Changed")    
+    console.log('Format Changed');
+    this.messageService.changeMessage('Format Changed');
   }
 }
