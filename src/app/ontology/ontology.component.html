@@ -8,7 +8,7 @@
               <input type="url2" class="form-control" id="inputUrlOntology" placeholder="Ontology Url" (change)=urlChanged($event.srcElement.value)>
           </div>      
            
-          <input  type="radio" value="Url" formControlName="0" data-md-icheck (change)="toggleInput('Url')"  />
+          <input  type="radio" value="Url" name="1" data-md-icheck (change)="toggleInput('Url')"  />
         </div>
 
         <div class="custom-file col-sm-11">
@@ -28,19 +28,16 @@
         <select class="custom-select col-sm-11" id="inputGroupSelect01" (change)="formatChanged()">
         </select>
         &nbsp;
-        <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat(select$event)"/>
+        <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
         
     </div>
 
-        <button type="button" class="btn btn-secondary" (click)="uploadOntology()">Upload Ontology</button>
-        
+        <button type="button" class="btn btn-secondary" (click)="uploadOntology()">Upload Ontology</button>      
         
         <br>
         {{messageService.testString}}
 
       </div>
-
-      
 
       <div class="col-xs-6" >
         

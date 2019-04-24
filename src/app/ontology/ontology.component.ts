@@ -11,7 +11,7 @@ export class OntologyComponent implements OnInit {
   constructor(public messageService: MessageService,) { }
 
   useChosenFormat = false;
-  inputStatus = 'Url';
+  inputStatus = null;
 
   ngOnInit() {
     this.messageService.changeMessage('');
@@ -48,5 +48,4 @@ export class OntologyComponent implements OnInit {
     console.log("Format Changed")
     this.messageService.changeMessage("Format Changed")    
   }
-
 }
