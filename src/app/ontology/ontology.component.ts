@@ -8,7 +8,10 @@ import { MessageService } from '../service/message.service';
 })
 export class OntologyComponent implements OnInit {
 
-  constructor(public messageService: MessageService) { }
+  constructor(public messageService: MessageService,) { }
+
+  useChosenFormat = false;
+  inputStatus = 'Url';
 
   ngOnInit() {
     this.messageService.changeMessage('');
@@ -24,14 +27,26 @@ export class OntologyComponent implements OnInit {
     this.messageService.changeMessage('url changed');
   }
 
-
   ontologyFileUpload() {
     console.log('Ontology File Upload');
     this.messageService.changeMessage('Ontology File Upload');
   }
 
+  toggleChoosenFormat(formatYN) {
+    this.useChosenFormat = formatYN.target.checked
+    console.log(this.useChosenFormat)
+    this.messageService.changeMessage('Format is now: ' + this.useChosenFormat)
+  }
+
+  toggleInput(status){
+    this.inputStatus = status;
+    console.log(this.inputStatus)
+    this.messageService.changeMessage("Type of input is now: " + this.inputStatus)
+  }
+
   formatChanged() {
-    
+    console.log("Format Changed")
+    this.messageService.changeMessage("Format Changed")    
   }
 
 }
