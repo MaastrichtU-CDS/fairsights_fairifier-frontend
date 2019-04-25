@@ -1,0 +1,13 @@
+.btnValidateLeft {
+    width: 125px;
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 25px;
+}
+
+.btnValidateRight {
+    width: 125px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 25px;
+}
