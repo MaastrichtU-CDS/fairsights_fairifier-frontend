@@ -10,20 +10,18 @@ export class ValidateComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.tester();
-  }
-
-  useLimit = false;
   resultsAmount = 5;
   sqlQuery = '';
   testCounter = 0;
 
+  ngOnInit() {
+    this.tester();
+  }
+
   tester() {
-    while (this.testCounter < 1) 
-    {
-      this.testCounter += 1,
-      this.sqlQuery += 'ABC '
+    while (this.testCounter < 1) {
+      this.testCounter += 1;
+      this.sqlQuery += 'ABC ';
     }
   }
 }
