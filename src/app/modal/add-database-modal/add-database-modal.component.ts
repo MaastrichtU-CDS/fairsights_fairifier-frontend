@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { DatabaseFormats } from '../../model/allDatabaseFormats'
+import { DatabaseFormats } from '../../model/allDatabaseFormats';
 
 @Component({
   selector: 'app-add-database-modal',
@@ -16,7 +16,7 @@ export class AddDatabaseModalComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder
-  ) { 
+  ) {
       this.createForm();
   }
 
