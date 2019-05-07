@@ -1,0 +1,53 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Database</h4>
+    <button type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+    X
+   </button>
+</div>
+<form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <div class="modal-body">
+        <div class="container">
+            <div class="form-group">
+                <label for="databasename">Databasename</label>
+                <input type="text"
+                    class="form-control"
+                    formControlName="databasename" required/>
+            </div>
+            <div class="form-group">
+                <label for="url">Url</label>
+                <input type="text"
+                class="form-control"
+                formControlName="url" required />
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text"
+                class="form-control"
+                formControlName="username" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" 
+                class="form-control"
+                formControlName="password">
+            </div>
+            <div class="form-group">
+                <label for="format">Format</label>
+                <select class="form-control"
+                    formControlName="format">
+                    <option *ngFor="let string of allFormats">
+                        {{string}}
+                    </option>
+                </select>
+            </div>
+    </div>
+</div>
+
+    <div class="modal-footer">
+        <button class="btn btn-success"
+            [disabled]="!myForm.valid">
+            Save Database
+        </button>
+    </div>
+</form>
