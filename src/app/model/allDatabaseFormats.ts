@@ -1,0 +1,20 @@
+export const DatabaseFormats: string[] = [
+    "CSV",
+    "DERBY",
+    "H2",
+    "HSQLDB",
+    "SQLITE",
+    "MYSQL",
+    "MARIADB",
+    "GAE",
+    "ORACLE",
+    "POSTGRESQL",
+    "HANA",
+    "JTDS",
+    "SQLSERVER",
+    "FIREBIRD",
+    "DB2",
+    "DB2_AS400",
+    "TERADATA",
+    "INFORMIX"
+];
