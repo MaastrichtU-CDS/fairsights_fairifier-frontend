@@ -1,51 +1,7 @@
 <div class="container-fluid" style="margin-top: 70px;">
   <div class="row justify-content-around h-100">
 
-      <form>
-
-          <div class="form-group row">
-              <label for="inputDatabasename" class="col-sm-3 col-form-label">Name </label>
-              <div class="col-sm-9">
-                  <input type="databasename" class="form-control" id="inputDatabasename" placeholder="Database Name" (change)=nameChanged($event.srcElement.value)>
-              </div>
-            </div>
-
-          <div class="form-group row">
-            <label for="inputUrl" class="col-sm-3 col-form-label">Url</label>
-            <div class="col-sm-9">
-                <input type="url2" class="form-control" id="inputUrl" placeholder="Database Url" (change)=urlChanged($event.srcElement.value)>
-            </div>
-          </div>
-    
-          <div class="form-group row">
-            <label for="inputUsername" class="col-sm-3 col-form-label">Username</label>
-            <div class="col-sm-9">
-              <input type="username" class="form-control" id="inputUsername" placeholder="Database Username" (change)=usernameChanged($event.srcElement.value)>
-            </div>
-          </div>
-
-              
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
-            <div class="col-sm-9">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Database Password" (change)=passwordChanged($event.srcElement.value)>
-            </div>
-          </div>
-    
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Format</label>
-              </div>
-              <select class="custom-select" id="inputGroupSelect02" (change)="formatChanged()">
-              </select>
-          </div>
-          <button type="button" class="btn btn-secondary" (click)="addDatabase()">Save Database</button>
-    
-          <fieldset class="form-group">
-          </fieldset>
-                  {{messageService.testString}}
-        </form>
-         
+        <button type="button" class="btn btn-secondary" (click)="openDatabaseModal()">Add Database</button>
 
   </div>
 </div>

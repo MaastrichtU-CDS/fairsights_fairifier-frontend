@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../service/message.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddDatabaseModalComponent } from '../modal/add-database-modal/add-database-modal.component'
 
 @Component({
   selector: 'app-database',
@@ -8,37 +10,27 @@ import { MessageService } from '../service/message.service';
 })
 export class DatabaseComponent implements OnInit {
 
-  constructor(public messageService: MessageService) { }
+    dataSource: string;
 
-  addDatabase() {
-    console.log('Database Added'),
-    this.messageService.changeMessage('Database Added');
-  }
+  constructor(public messageService: MessageService,
+    private modalService: NgbModal) { }
 
-  formatChanged() {
-    console.log('Format Changed'),
-    this.messageService.changeMessage('Format Changed');
-  }
+    openDatabaseModal() {
+      const modalRef = this.modalService.open(AddDatabaseModalComponent);
+      modalRef.result.then((result) => {
+        this.dataSource = "{ \"driver\": \"" + result.format + "\", \"name\": \"" + result.databasename + "\", \"password\": \"" + result.password + "\", \"url\": \"" + result.url + "\", \"username\": \"" + result.username + "\" }"
+        console.log(result);
+        console.log(result.databasename)
+        console.log(result.format)
+        console.log(result.password)
+        console.log(result.url)
+        console.log(result.username)
 
-  nameChanged(newName) {
-    console.log('Name Changed'),
-    this.messageService.changeMessage('Name Changed');
-  }
-
-  urlChanged(newUrl) {
-    console.log('Url Changed'),
-    this.messageService.changeMessage('Url Changed');
-  }
-
-  usernameChanged(newUsername) {
-    console.log('Username Changed'),
-    this.messageService.changeMessage('Username Changed');
-  }
-
-  passwordChanged(newPassword) {
-    console.log('Password Changed'),
-    this.messageService.changeMessage('Password Changed');
-  }
+        console.log(this.dataSource)
+      }) .catch ((error) => {
+          console.log(error);
+      });
+    }
 
   ngOnInit() {
     this.messageService.changeMessage('');
