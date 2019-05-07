@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { ValidateComponent } from './validate/validate.component';
 import { EditComponent } from './edit/edit.component';
 import { ResultComponent } from './result/result.component';
 import { MessageService } from './service/message.service';
+import { AddDatabaseModalComponent } from './modal/add-database-modal/add-database-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,20 @@ import { MessageService } from './service/message.service';
     DatabaseComponent,
     ValidateComponent,
     EditComponent,
-    ResultComponent
+    ResultComponent,
+    AddDatabaseModalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddDatabaseModalComponent
+  ]
 })
 export class AppModule { }
