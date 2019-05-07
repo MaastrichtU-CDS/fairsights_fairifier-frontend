@@ -37,7 +37,7 @@ export class AddDatabaseModalComponent implements OnInit {
       });
   }
 
-  private submitForm() {
+  public submitForm() {
       this.activeModal.close(this.myForm.value);
   }
 
