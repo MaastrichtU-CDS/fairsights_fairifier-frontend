@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../service/message.service';
+import { ValidateService } from '../service/validate.service';
 
 @Component({
   selector: 'app-validate',
@@ -8,20 +9,34 @@ import { MessageService } from '../service/message.service';
 })
 export class ValidateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+      private validateService: ValidateService,
+      public messageService: MessageService
+  ) { }
 
   resultsAmount = 5;
   sqlQuery = '';
-  testCounter = 0;
+  database = '';
 
   ngOnInit() {
-    this.tester();
   }
 
-  tester() {
-    while (this.testCounter < 1) {
-      this.testCounter += 1;
-      this.sqlQuery += 'ABC ';
+    amountChanged(newAmount) {
+        this.resultsAmount = newAmount.target.value;
     }
-  }
+
+    databaseChanged(newDatabase) {
+        this.database = newDatabase.target.value;
+    }
+    
+    sqlChanged(newQuery) {
+        this.sqlQuery = newQuery.target.value; 
+    }
+
+    testData() {
+        this.validateService.testSqlQuery(this.resultsAmount, this.database, this.sqlQuery);
+    }
+    saveData() {
+        this.validateService.saveSqlQuery()
+    }
 }
