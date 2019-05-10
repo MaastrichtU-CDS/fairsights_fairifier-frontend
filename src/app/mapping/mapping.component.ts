@@ -8,40 +8,39 @@ import { MessageService } from '../service/message.service';
 })
 export class MappingComponent implements OnInit {
 
-  constructor(public messageService: MessageService) { }
+    constructor(public messageService: MessageService) { }
 
-  @ViewChild('labelImport')
-  labelImport: ElementRef;
-  mappingFile: any;
-  useChosenFormat = false;
+    @ViewChild('labelImport')
+    labelImport: ElementRef;
+    mappingFile: any;
+    useChosenFormat = false;
 
-  ngOnInit() {
-    this.messageService.changeMessage('');
-  }
+    ngOnInit() {
+        this.messageService.changeMessage('');
+    }
 
-  downloadMapping() {
-    console.log('Download Mapping');
-    this.messageService.changeMessage('Mapping Download');
-  }
+    downloadMapping() {
+        console.log('Download Mapping');
+        this.messageService.changeMessage('Mapping Download');
+    }
 
-  mappingFileUpload() {
-    console.log('Mapping File Upload');
-    this.messageService.changeMessage('Mapping File Upload');
-  }
+    mappingFileUpload() {
+        console.log('Mapping File Upload');
+        this.messageService.changeMessage('Mapping File Upload');
+    }
 
-  mappingUpload() {
-    console.log('Mapping Upload');
-    this.messageService.changeMessage('Mapping Uploaded');
-  }
+    mappingUpload() {
+        console.log('Mapping Upload');
+        this.messageService.changeMessage('Mapping Uploaded');
+    }
 
-  formatChanged() {
-    console.log('Format Changed');
-    this.messageService.changeMessage('Format Changed');
-  }
+    formatChanged() {
+        console.log('Format Changed');
+        this.messageService.changeMessage('Format Changed');
+    }
 
-  toggleChoosenFormat(e) {
-    this.useChosenFormat = e.target.checked;
-    this.messageService.changeMessage(this.useChosenFormat);
-  }
-
+    toggleChoosenFormat(e) {
+        this.useChosenFormat = e.target.checked;
+        this.messageService.changeMessage(this.useChosenFormat);
+    }
 }

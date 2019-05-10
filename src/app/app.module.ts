@@ -37,8 +37,6 @@ import { AddDatabaseModalComponent } from './modal/add-database-modal/add-databa
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-    AddDatabaseModalComponent
-  ]
+  entryComponents: [AddDatabaseModalComponent]
 })
 export class AppModule { }

@@ -13,32 +13,31 @@ export class AddDatabaseModalComponent implements OnInit {
     myForm: FormGroup;
     allFormats = DatabaseFormats;
 
-  constructor(
-    public activeModal: NgbActiveModal,
-    private formBuilder: FormBuilder
-  ) {
-      this.createForm();
-  }
+    constructor(
+        public activeModal: NgbActiveModal,
+        private formBuilder: FormBuilder
+    ) {
+        this.createForm();
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  closeModal() {
-    this.activeModal.close('Modal Closed');
-  }
+    closeModal() {
+        this.activeModal.close('Modal Closed');
+    }
 
-  private createForm() {
-      this.myForm = this.formBuilder.group ({
-          format: 'CSV',
-          databasename: '',
-          password: '',
-          url: '',
-          username: ''
-      });
-  }
+    private createForm() {
+        this.myForm = this.formBuilder.group ({
+            format: 'CSV',
+            databasename: '',
+            password: '',
+            url: '',
+            username: ''
+        });
+    }
 
-  public submitForm() {
-      this.activeModal.close(this.myForm.value);
-  }
-
+    public submitForm() {
+        this.activeModal.close(this.myForm.value);
+    }
 }

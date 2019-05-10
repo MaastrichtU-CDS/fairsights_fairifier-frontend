@@ -17,24 +17,24 @@ export class DatabaseComponent implements OnInit {
         public messageService: MessageService,
         private modalService: NgbModal,
         private databaseService: DatabaseService
-        ) { }
+    ) { }
 
     openDatabaseModal() {
-      const modalRef = this.modalService.open(AddDatabaseModalComponent);
-      modalRef.result.then((result) => {
-        this.dataSource = '{ \"driver\": \"' + result.format + '\", \"name\": \"' +
-        result.databasename + '\", \"password\": \"' + result.password + '\", \"url\": \"' +
-        result.url + '\", \"username\": \"' + result.username + '\" }';
-        console.log(this.dataSource);
+        const modalRef = this.modalService.open(AddDatabaseModalComponent);
+        modalRef.result.then((result) => {
+            this.dataSource = '{ \"driver\": \"' + result.format + '\", \"name\": \"' +
+            result.databasename + '\", \"password\": \"' + result.password + '\", \"url\": \"' +
+            result.url + '\", \"username\": \"' + result.username + '\" }';
+            console.log(this.dataSource);
 
-        this.databaseService.addDatabase(this.dataSource);
+            this.databaseService.addDatabase(this.dataSource);
 
-      }) .catch ((error) => {
-          console.log(error);
-      });
+        }) .catch ((error) => {
+            console.log(error);
+        });
     }
 
-  ngOnInit() {
-    this.messageService.changeMessage('');
-  }
+    ngOnInit() {
+        this.messageService.changeMessage('');
+    }
 }

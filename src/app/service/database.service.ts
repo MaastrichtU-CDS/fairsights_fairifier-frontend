@@ -11,7 +11,7 @@ export class DatabaseService {
     constructor(
         private http: HttpClient,
         private messageService: MessageService
-        ) { }
+    ) { }
 
     private options = { headers: new HttpHeaders().set('Content-Type', 'application/json')};
 
@@ -22,7 +22,6 @@ export class DatabaseService {
         return this.http.post(url, dataSource, this.options)
             .subscribe(
                 data => {
-
                     console.log('Adding Database Succesful', data),
                     this.messageService.changeMessage('Adding database is succesful');
                 },
@@ -32,5 +31,5 @@ export class DatabaseService {
                     this.messageService.changeMessage('Adding database is unsuccesful. Error: ' + error.message);
                 }
             );
-    }
+        }
 }
