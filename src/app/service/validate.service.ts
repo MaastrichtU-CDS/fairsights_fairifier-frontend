@@ -70,7 +70,8 @@ export class ValidateService {
                 this.convertData(response)
             ),
             error => (
-                console.log("Test Unsuccesfull: ", error)
+                this.messageService.changeMessage("Test Unsuccesfull: " + error.message),
+                console.log(error)
             )
         )
   }

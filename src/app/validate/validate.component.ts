@@ -14,7 +14,7 @@ export class ValidateComponent implements OnInit {
       public messageService: MessageService
   ) { }
 
-  resultsAmount = 5;
+  resultsAmount;
   sqlQuery = '';
   database = '';
 
