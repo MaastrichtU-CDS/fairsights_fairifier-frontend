@@ -28,15 +28,16 @@ export class ValidateComponent implements OnInit {
     databaseChanged(newDatabase) {
         this.database = newDatabase.target.value;
     }
-    
+
     sqlChanged(newQuery) {
-        this.sqlQuery = newQuery.target.value; 
+        this.sqlQuery = newQuery.target.value;
     }
 
     testData() {
         this.validateService.testSqlQuery(this.resultsAmount, this.database, this.sqlQuery);
     }
+
     saveData() {
-        this.validateService.saveSqlQuery()
+        this.validateService.saveSqlQuery();
     }
 }
