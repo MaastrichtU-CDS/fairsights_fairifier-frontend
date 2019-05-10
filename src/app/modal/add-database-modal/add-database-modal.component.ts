@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { DatabaseFormats } from '../../model/allDatabaseFormats';
+import { DATABASEFORMATS } from '../../model/allDatabaseFormats';
+import { databaseFormat } from '../../model/format';
 
 @Component({
   selector: 'app-add-database-modal',
@@ -11,7 +12,7 @@ import { DatabaseFormats } from '../../model/allDatabaseFormats';
 export class AddDatabaseModalComponent implements OnInit {
 
     myForm: FormGroup;
-    allFormats = DatabaseFormats;
+    allFormats = DATABASEFORMATS;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -36,7 +37,7 @@ export class AddDatabaseModalComponent implements OnInit {
             username: ''
         });
     }
-
+    
     public submitForm() {
         this.activeModal.close(this.myForm.value);
     }
