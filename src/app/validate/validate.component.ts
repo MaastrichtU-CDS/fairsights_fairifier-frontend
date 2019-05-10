@@ -10,7 +10,7 @@ import { ValidateService } from '../service/validate.service';
 export class ValidateComponent implements OnInit {
 
   constructor(
-      private validateService: ValidateService,
+      public validateService: ValidateService,
       public messageService: MessageService
   ) { }
 
