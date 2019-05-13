@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../service/message.service';
+import { OntologyService } from '../service/ontology.service'
+import { ONTOLOGYFORMATS, pickedOntologyFormat } from '../model/ontologyFormats'
 
 @Component({
   selector: 'app-ontology',
@@ -8,23 +10,38 @@ import { MessageService } from '../service/message.service';
 })
 export class OntologyComponent implements OnInit {
 
-    constructor(public messageService: MessageService) { }
+    constructor(public messageService: MessageService,
+        public ontologyService: OntologyService) { }
 
     useChosenFormat = false;
     inputStatus = null;
+    ontologyFile: any;
+    allOntologyFormats = ONTOLOGYFORMATS
+    selectedFormat = pickedOntologyFormat
+    currentUrl = ''
 
     ngOnInit() {
         this.messageService.changeMessage('');
     }
 
     uploadOntology() {
-        console.log('Ontology Uploaded'),
-        this.messageService.changeMessage('Ontology Uploaded');
+        if (this.inputStatus == "File") {
+            console.log("file")
+            this.ontologyService.uploadOntologyFile(this.ontologyFile, "" , this.useChosenFormat)
+        }
+        else if (this.inputStatus == "Url") {
+            console.log("url")
+        }
+
+        else {
+            console.log("Please select url or file as your option")
+            this.messageService.changeMessage("Please select wheter you are wanting to upload a File or a Url")
+        }
     }
 
     urlChanged(url) {
-        console.log('url changed'),
-        this.messageService.changeMessage('url changed');
+        this.currentUrl = url
+        this.messageService.changeMessage('url changed: ' + this.currentUrl);
     }
 
     ontologyFileUpload() {
@@ -34,18 +51,16 @@ export class OntologyComponent implements OnInit {
 
     toggleChoosenFormat(formatYN) {
         this.useChosenFormat = formatYN.target.checked;
-        console.log(this.useChosenFormat);
         this.messageService.changeMessage('Format is now: ' + this.useChosenFormat);
     }
 
     toggleInput(status) {
         this.inputStatus = status;
-        console.log(this.inputStatus);
         this.messageService.changeMessage('Type of input is now: ' + this.inputStatus);
     }
 
-    formatChanged() {
-        console.log('Format Changed');
+    formatChanged(newFormat) {
+        this.selectedFormat = this.allOntologyFormats.filter(function(Format) { return Format.shortName === newFormat});
         this.messageService.changeMessage('Format Changed');
     }
 }

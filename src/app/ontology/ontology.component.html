@@ -23,7 +23,12 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Format</label>
             </div>
-            <select class="custom-select col-sm-11" id="inputGroupSelect01" (change)="formatChanged()">
+            <select class="custom-select col-sm-11" id="inputGroupSelect01" (change)="formatChanged($event.target.value)">
+            <option *ngFor="let Format of allOntologyFormats"
+            [selected]="Format.fullname == selectedFormat[0].fullName"
+            [value]="Format.shortName">
+                {{Format.fullName}} ({{Format.extension}})
+            </option>
             </select>
             &nbsp;
             <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>

@@ -19,5 +19,5 @@ export const DATABASEFORMATS: databaseFormat[] = [
     { driver: 'DB2', preUrl: 'jdbc:db2:'},
     { driver: 'DB2_AS400', preUrl: 'jdbc:as400:'},
     { driver: 'TERADATA', preUrl: 'jdbc:teradata:'},
-    { driver: 'INFORMIX', preUrl: 'jdbc:informix-sqli:'}
+    { driver: 'INFORMIX', preUrl: 'jdbc:informix-sqli'}
 ]
