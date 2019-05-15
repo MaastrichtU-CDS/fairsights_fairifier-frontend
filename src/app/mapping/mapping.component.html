@@ -8,21 +8,21 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Format</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01" (change)="formatChanged()">
+                <select class="custom-select col-sm-11" id="inputGroupSelectMapping01" (change)="formatChanged($event.target.value)">
+                        <option *ngFor = "let mappingFormat of allMappingFormats"
+                        [selected]="mappingFormat.fullName == selectedFormat[0].fullName"
+                        [value]="mappingFormat.shortName">
+                        {{mappingFormat.fullName}} ({{mappingFormat.extension}})
+                    </option>
                 </select>
-            </div>
-
-            <label class="container"> 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
+                <br>
+                <label class="container"> 
+                        <div class="input-group mb-3">
                             <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
                             Use this format for uploading?
                         </div>
-                    </div>
-                </div>
-            </label>
-
+                    </label>
+            </div>
         </div>
 
         <div class="col-6" >
@@ -31,10 +31,10 @@
             <br>
 
             <div class="custom-file">
-                <input type="file" class="custom-file-input" multiple id="importFile" (change)="mappingFileUpload()">
-                <label class="custom-file-label"><i class="fas fa-search"></i> Choose file</label>
+                <input type="file" class="custom-file-input" multiple id="importFile" (change)="mappingFileUpload($event)">
+                <label class="custom-file-label" #labelImport><i class="fas fa-search"></i> Choose file</label>
             </div>
-          
+
             <br>
             {{messageService.testString}}
         </div>    

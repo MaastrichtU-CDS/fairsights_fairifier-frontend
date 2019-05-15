@@ -1,6 +1,6 @@
 import { MappingFormat } from './format';
 
-export const allMappingFormats: MappingFormat[] = [
+export const MAPPINGFORMATS: MappingFormat[] = [
     { fullName: "BinaryRDF", shortName: "BINARY", extension: ".bdf"},
     { fullName: "JSON-LD", shortName: "JSONLD", extension: ".jsonld"},
     { fullName: "N3", shortName: "N3", extension: ".n3"},
@@ -14,6 +14,6 @@ export const allMappingFormats: MappingFormat[] = [
     { fullName: "Turtle", shortName: "TURTLE", extension: ".ttl"}
 ];
 
-export const pickedFormat: MappingFormat[] = [
+export const pickedMappingFormat: MappingFormat[] = [
     { fullName: "N3", shortName: "N3", extension: ".n3"}
 ];

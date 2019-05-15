@@ -22,18 +22,18 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Format</label>
+                </div>
+                <select class="custom-select col-sm-11" id="inputGroupSelect01" (change)="formatChanged($event.target.value)">
+                    <option *ngFor="let Format of allOntologyFormats"
+                    [selected]="Format.fullname == selectedFormat[0].fullName"
+                    [value]="Format.shortName">
+                        {{Format.fullName}} ({{Format.extension}})
+                    </option>
+                </select>
+                &nbsp;
+                <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
             </div>
-            <select class="custom-select col-sm-11" id="inputGroupSelect01" (change)="formatChanged($event.target.value)">
-            <option *ngFor="let Format of allOntologyFormats"
-            [selected]="Format.fullname == selectedFormat[0].fullName"
-            [value]="Format.shortName">
-                {{Format.fullName}} ({{Format.extension}})
-            </option>
-            </select>
-            &nbsp;
-            <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
-        </div>
-        <button type="button" class="btn btn-secondary" (click)="uploadOntology()">Upload Ontology</button>      
+            <button type="button" class="btn btn-secondary" (click)="uploadOntology()">Upload Ontology</button>      
         
         <br>
         {{messageService.testString}}
@@ -42,4 +42,3 @@
         abc
     </div>
 </div>
-

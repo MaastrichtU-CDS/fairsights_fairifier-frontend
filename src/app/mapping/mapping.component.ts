@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MessageService } from '../service/message.service';
+import { MAPPINGFORMATS, pickedMappingFormat } from '../model/mappingFormats';
 
 @Component({
   selector: 'app-mapping',
@@ -14,6 +15,10 @@ export class MappingComponent implements OnInit {
     labelImport: ElementRef;
     mappingFile: any;
     useChosenFormat = false;
+    inputStatus = null;
+    allMappingFormats = MAPPINGFORMATS;
+    selectedFormat = pickedMappingFormat;
+    currentUrl = '';
 
     ngOnInit() {
         this.messageService.changeMessage('');
@@ -24,13 +29,17 @@ export class MappingComponent implements OnInit {
         this.messageService.changeMessage('Mapping Download');
     }
 
-    mappingFileUpload() {
-        console.log('Mapping File Upload');
+    mappingFileUpload($event) {
+        this.mappingFile = $event.target.files[0]
         this.messageService.changeMessage('Mapping File Upload');
+
+        this.labelImport.nativeElement.innerText = this.mappingFile.name;
     }
 
     mappingUpload() {
         console.log('Mapping Upload');
+        console.log(this.selectedFormat[0].fullName)
+        console.log(this.allMappingFormats[2].fullName)
         this.messageService.changeMessage('Mapping Uploaded');
     }
 
