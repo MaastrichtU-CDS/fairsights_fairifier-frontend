@@ -8,7 +8,7 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Format</label>
                 </div>
-                <select class="custom-select col-sm-11" id="inputGroupSelectMapping01" (change)="formatChanged($event.target.value)">
+                <select class="custom-select col-sm-11" id="inputGroupSelectMapping01"  (change)="formatChanged($event.target.value)">
                         <option *ngFor = "let mappingFormat of allMappingFormats"
                         [selected]="mappingFormat.fullName == selectedFormat[0].fullName"
                         [value]="mappingFormat.shortName">

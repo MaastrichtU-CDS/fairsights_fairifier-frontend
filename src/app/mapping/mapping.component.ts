@@ -38,14 +38,12 @@ export class MappingComponent implements OnInit {
 
     mappingUpload() {
         console.log('Mapping Upload');
-        console.log(this.selectedFormat[0].fullName)
-        console.log(this.allMappingFormats[2].fullName)
         this.messageService.changeMessage('Mapping Uploaded');
     }
 
-    formatChanged() {
-        console.log('Format Changed');
-        this.messageService.changeMessage('Format Changed');
+    formatChanged(newMappingFormat) {
+        this.selectedFormat = newMappingFormat
+        this.messageService.changeMessage('Format Changed: ' + this.selectedFormat);
     }
 
     toggleChoosenFormat(e) {
