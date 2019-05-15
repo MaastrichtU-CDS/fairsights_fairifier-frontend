@@ -1,7 +1,7 @@
-import { databaseFormat } from './format';
+import { DatabaseFormat } from './format';
 
 
-export const DATABASEFORMATS: databaseFormat[] = [
+export const DATABASEFORMATS: DatabaseFormat[] = [
     { driver: 'CSV', preUrl: 'jdbc:relique:csv:'},
     { driver: 'DERBY', preUrl: 'jdbc:derby:'},
     { driver: 'H2', preUrl: 'jdbc:h2:'},
@@ -20,4 +20,4 @@ export const DATABASEFORMATS: databaseFormat[] = [
     { driver: 'DB2_AS400', preUrl: 'jdbc:as400:'},
     { driver: 'TERADATA', preUrl: 'jdbc:teradata:'},
     { driver: 'INFORMIX', preUrl: 'jdbc:informix-sqli:'}
-]
+];

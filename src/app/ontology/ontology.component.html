@@ -11,8 +11,8 @@
             </div>
 
             <div class="custom-file col-sm-11">
-                <input type="file" class="custom-file-input" multiple id="importFile" (change)="ontologyFileUpload()">
-                <label class="custom-file-label"><i class="fas fa-search"></i> Choose file</label>
+                <input type="file" class="custom-file-input" multiple id="importFile" (change)="ontologyFileUpload($event)">
+                <label class="custom-file-label" #labelImport><i class="fas fa-search"></i> Choose file</label>
             </div>
             &nbsp;
             <input type="radio"  value="File" name="1"  data-md-icheck (change)="toggleInput('File')" />

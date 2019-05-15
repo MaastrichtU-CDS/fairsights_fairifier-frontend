@@ -14,14 +14,34 @@ export class OntologyService {
     ) { }
 
     uploadOntologyFile(ontologyFile, fileFormat, useFileFormat ) {
-        const extraUrl = "/ontology/import/file"
-        const totalUrl = environment.apiUrl + extraUrl
-        console.log(totalUrl)
+        const extraUrl = '/ontology/import/fil';
+        const totalUrl = environment.apiUrl + extraUrl;
+        console.log( 'Not yet implement');
+        return this.http.post(totalUrl, '')
+        .subscribe(
+            data => {
+                console.log(data + ' success');
+            },
+
+            error => {
+                console.log(error + ' error');
+            }
+        );
     }
 
-    uploadOntologyUrl(ontologyUrl, fileFormat, useFIleFormat) {
-        const extraUrl = "/ontology/import/url"
-        const totalUrl = environment.apiUrl + extraUrl
-        console.log(totalUrl)
+    uploadOntologyUrl(ontologyUrl, fileFormat, useFileFormat) {
+        const extraUrl = '/ontology/import/url';
+        const totalUrl = environment.apiUrl + extraUrl;
+        console.log('Not yet implemented');
+        return this.http.post(totalUrl, '')
+        .subscribe(
+            data => {
+                console.log(data + ' success');
+            },
+
+            error => {
+                console.log( error + ' error' );
+            }
+        );
     }
 }

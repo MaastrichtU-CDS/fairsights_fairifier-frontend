@@ -1,9 +1,9 @@
-export class databaseFormat {
+export class DatabaseFormat {
     driver: string;
     preUrl: string;
 }
 
-export class ontologyFormat {
+export class OntologyFormat {
     fullName: string;
     shortName: string;
     extension: string;

@@ -22,8 +22,9 @@ export class DatabaseComponent implements OnInit {
     ) { }
 
     private getByName(nameDriver) {
-        for ( var i = 0, iLen = DATABASEFORMATS.length; i<iLen; i++) {
-            if (DATABASEFORMATS[i].driver == nameDriver) return DATABASEFORMATS[i].preUrl
+        for ( let i = 0, iLen = DATABASEFORMATS.length; i < iLen; i++) {
+            if (DATABASEFORMATS[i].driver === nameDriver) {}
+            return DATABASEFORMATS[i].preUrl;
         }
     }
 
@@ -31,9 +32,9 @@ export class DatabaseComponent implements OnInit {
         const modalRef = this.modalService.open(AddDatabaseModalComponent);
         modalRef.result.then((result) => {
             result.url = result.url.replace(/\\/g, '\\\\');
-            this.driverUrl = this.getByName(result.format)
-            result.url =  this.driverUrl+ result.url
-            console.log(result.url)
+            this.driverUrl = this.getByName(result.format);
+            result.url =  this.driverUrl + result.url;
+            console.log(result.url);
             this.dataSource = '{ \"driver\": \"' + result.format + '\", \"name\": \"' +
             result.databasename + '\", \"password\": \"' + result.password + '\", \"url\": \"' +
             result.url + '\", \"username\": \"' + result.username + '\" }';
