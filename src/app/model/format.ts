@@ -8,3 +8,9 @@ export class OntologyFormat {
     shortName: string;
     extension: string;
 }
+
+export class MappingFormat {
+    fullName: string;
+    shortName: string;
+    extension: string;
+}
