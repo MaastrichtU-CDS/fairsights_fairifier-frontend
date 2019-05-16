@@ -14,7 +14,7 @@ export class OntologyService {
     ) { }
 
     uploadOntologyFile(ontologyFile, fileFormat, useFileFormat ) {
-        const extraUrl = '/ontology/import/fil';
+        const extraUrl = '/ontology/import/file';
         const totalUrl = environment.apiUrl + extraUrl;
         console.log( 'Not yet implement');
         return this.http.post(totalUrl, '')
@@ -25,6 +25,7 @@ export class OntologyService {
 
             error => {
                 console.log(error + ' error');
+                console.log(error)
             }
         );
     }

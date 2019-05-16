@@ -14,11 +14,11 @@ export class MappingService {
   ) { }
 
   mappingDownload(fileType) {
-      var extra_Url = '/mapping/download?format=' + fileType
-      var url = environment.apiUrl + extra_Url
+      const extraUrl = '/mapping/download?format=' + fileType;
+      const url = environment.apiUrl + extraUrl;
 
-      var contentDisposition
-      var filename
+      let contentDisposition;
+      let filename;
 
       return this.http.get(url,
         {
@@ -37,13 +37,13 @@ export class MappingService {
                     console.log(error),
                     this.messageService.changeMessage('Downloading mapping is unsuccesful, Error: ' + error.message)
                 )
-        )
+        );
   }
 
   downloadFile(data, name) {
     const match = navigator.userAgent.search(/(?:Edge|MSIE|Trident\/.*; rv:)/);
     if (match !== -1) {
-        navigator.msSaveBlob(data, name)
+        navigator.msSaveBlob(data, name);
     } else {
         const objectUrl: string = URL.createObjectURL(data);
         const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
@@ -58,25 +58,25 @@ export class MappingService {
   }
 
   uploadMapping(mappingFile, currentFormat) {
-      var extra_Url = '/mapping/upload'
+      let extraUrl = '/mapping/upload';
       if (currentFormat !== '') {
-          extra_Url = extra_Url + '?format=' + currentFormat
+          extraUrl = extraUrl + '?format=' + currentFormat;
       }
-      var formData = new FormData();
-      formData.append('file', mappingFile)
+      const formData = new FormData();
+      formData.append('file', mappingFile);
 
-      var url = environment.apiUrl + extra_Url
+      const url = environment.apiUrl + extraUrl;
 
-      return this.http.put(url, formData) 
+      return this.http.put(url, formData)
         .subscribe(
             data => {
-                console.log('Uploading mapping is succesful ', data)
-                this.messageService.changeMessage('Uploading mapping is succesful')
+                console.log('Uploading mapping is succesful ', data);
+                this.messageService.changeMessage('Uploading mapping is succesful');
             },
             error => {
                 console.log(error),
-                this.messageService.changeMessage('Uploading mapping is unsuccesful, Error: ' + error.message)
+                this.messageService.changeMessage('Uploading mapping is unsuccesful, Error: ' + error.message);
             }
-        )
+        );
   }
 }

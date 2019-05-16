@@ -35,7 +35,11 @@ export class ValidateComponent implements OnInit {
     }
 
     testData() {
-        this.validateService.testSqlQuery(this.resultsAmount, this.database, this.sqlQuery);
+        if (this.resultsAmount != undefined) {
+            this.validateService.testSqlQuery(this.resultsAmount, this.database, this.sqlQuery);
+        } else {
+            this.messageService.changeMessage('Please insert a results amount')
+        }
     }
 
     saveData() {

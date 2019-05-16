@@ -29,30 +29,30 @@ export class MappingComponent implements OnInit {
     }
 
     downloadMapping() {
-        this.mappingService.mappingDownload(this.selectedFormat[0].shortName)
+        this.mappingService.mappingDownload(this.selectedFormat[0].shortName);
     }
 
     mappingFileUpload($event) {
-        this.mappingFile = $event.target.files[0]
+        this.mappingFile = $event.target.files[0];
         this.messageService.changeMessage('Mapping File Chosen');
 
         this.labelImport.nativeElement.innerText = this.mappingFile.name;
     }
 
     mappingUpload() {
-        if (this.mappingFile != undefined) {
-            if (this.useChosenFormat == true) {
-                this.mappingService.uploadMapping(this.mappingFile, this.selectedFormat[0].shortName)
+        if (this.mappingFile !== undefined) {
+            if (this.useChosenFormat === true) {
+                this.mappingService.uploadMapping(this.mappingFile, this.selectedFormat[0].shortName);
             } else {
-                this.mappingService.uploadMapping(this.mappingFile, '')
+                this.mappingService.uploadMapping(this.mappingFile, '');
             }
         } else {
-            this.messageService.changeMessage('Please choose a file to upload')
+            this.messageService.changeMessage('Please choose a file to upload');
         }
     }
 
     formatChanged(newMappingFormat) {
-        this.selectedFormat = this.allMappingFormats.filter(function(Format) { return Format.shortName === newMappingFormat })
+        this.selectedFormat = this.allMappingFormats.filter(function(Format) { return Format.shortName === newMappingFormat; });
         this.messageService.changeMessage('Format Changed: ' + this.selectedFormat[0].fullName);
     }
 
