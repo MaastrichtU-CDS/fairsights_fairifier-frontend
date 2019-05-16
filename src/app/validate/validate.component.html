@@ -1,16 +1,19 @@
 <div class="container-fluid" style="margin-top: 70px;">
   <div class="row justify-content-around h-100">
 
-    <div  class="col-md-2">
+    <div  class="col-md-9">
+        <div class="row">
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">SQL</span>
             </div>
-            <textarea class="form-control" rows="25" aria-label="With textarea" (change)="sqlChanged($event)">{{sqlQuery}}</textarea>
+            <textarea class="form-control" rows="5" aria-label="With textarea" (change)="sqlChanged($event)">{{sqlQuery}}</textarea>
         </div>
     </div>
 
-    <div  class="col-md-7">
+<br>
+
+    <div  class="row">
         <div class="container">
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -28,6 +31,7 @@
             </div>
         </div>
     </div>
+</div>
 
         <div class="col-md-3">
             <button (click)="testData()" class="btn btn-secondary btn-block">Test Sql Query</button>
