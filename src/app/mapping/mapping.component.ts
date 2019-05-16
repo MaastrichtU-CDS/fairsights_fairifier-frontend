@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MessageService } from '../service/message.service';
 import { MAPPINGFORMATS, pickedMappingFormat } from '../model/mappingFormats';
+import { MappingService } from '../service/mapping.service';
 
 @Component({
   selector: 'app-mapping',
@@ -9,7 +10,10 @@ import { MAPPINGFORMATS, pickedMappingFormat } from '../model/mappingFormats';
 })
 export class MappingComponent implements OnInit {
 
-    constructor(public messageService: MessageService) { }
+    constructor(
+        public messageService: MessageService,
+        public mappingService: MappingService
+        ) { }
 
     @ViewChild('labelImport')
     labelImport: ElementRef;
@@ -25,25 +29,31 @@ export class MappingComponent implements OnInit {
     }
 
     downloadMapping() {
-        console.log('Download Mapping');
-        this.messageService.changeMessage('Mapping Download');
+        this.mappingService.mappingDownload(this.selectedFormat[0].shortName)
     }
 
     mappingFileUpload($event) {
         this.mappingFile = $event.target.files[0]
-        this.messageService.changeMessage('Mapping File Upload');
+        this.messageService.changeMessage('Mapping File Chosen');
 
         this.labelImport.nativeElement.innerText = this.mappingFile.name;
     }
 
     mappingUpload() {
-        console.log('Mapping Upload');
-        this.messageService.changeMessage('Mapping Uploaded');
+        if (this.mappingFile != undefined) {
+            if (this.useChosenFormat == true) {
+                this.mappingService.uploadMapping(this.mappingFile, this.selectedFormat[0].shortName)
+            } else {
+                this.mappingService.uploadMapping(this.mappingFile, '')
+            }
+        } else {
+            this.messageService.changeMessage('Please choose a file to upload')
+        }
     }
 
     formatChanged(newMappingFormat) {
-        this.selectedFormat = newMappingFormat
-        this.messageService.changeMessage('Format Changed: ' + this.selectedFormat);
+        this.selectedFormat = this.allMappingFormats.filter(function(Format) { return Format.shortName === newMappingFormat })
+        this.messageService.changeMessage('Format Changed: ' + this.selectedFormat[0].fullName);
     }
 
     toggleChoosenFormat(e) {

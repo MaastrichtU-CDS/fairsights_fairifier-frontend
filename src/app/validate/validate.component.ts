@@ -19,6 +19,7 @@ export class ValidateComponent implements OnInit {
   database = '';
 
   ngOnInit() {
+    this.messageService.changeMessage('');
   }
 
     amountChanged(newAmount) {
