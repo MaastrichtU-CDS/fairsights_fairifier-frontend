@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from '../service/message.service';
 import { environment } from '../../environments/environment';
 
@@ -16,6 +16,27 @@ export class ValidateService {
     public dataArray = [];
     public dataKeyProps = [];
     queryChanged = '';
+    public currentQuery = ''
+
+    getSqlQuery() {
+        const extraUrl = '/mapping/sqlquery'
+        const totalUrl = environment.apiUrl + extraUrl
+        
+
+        this.http.get(totalUrl, {responseType: 'text'})
+        .subscribe (
+            data => (
+                this.messageService.changeMessage('Sql Query Received'),
+                console.log(data),
+                this.currentQuery = data
+            ),
+
+            error => (
+                console.log(error),
+                this.messageService.changeMessage('Sql unsuccesfully received: ' + error.message)
+            )
+        )
+    }
 
     convertData(dataKey) {
         this.dataArray = [];
@@ -57,7 +78,23 @@ export class ValidateService {
             )
         );
     }
+
     saveSqlQuery() {
-        console.log('save');
+        this.queryChanged = this.currentQuery.replace(/\s/g, '%20');
+        const extraUrl = '/mapping/sqlquery?newSqlQuery=' + this.queryChanged
+        const totalUrl = environment.apiUrl + extraUrl;
+
+        this.http.put(totalUrl, this.currentQuery)
+        .subscribe(
+            response => (
+                this.messageService.changeMessage('Query Save Successful'),
+                console.log(response)
+            ),
+
+            error => (
+                console.log(error),
+                this.messageService.changeMessage('Query saved failed. Error: ' + error.message)
+            )
+        )
     }
 }

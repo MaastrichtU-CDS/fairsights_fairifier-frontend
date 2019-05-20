@@ -7,7 +7,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">SQL</span>
             </div>
-            <textarea class="form-control" rows="5" aria-label="With textarea" (change)="sqlChanged($event)">{{sqlQuery}}</textarea>
+            <textarea class="form-control" rows="5" aria-label="With textarea" (change)="sqlChanged($event)">{{validateService.currentQuery}}</textarea>
         </div>
     </div>
 

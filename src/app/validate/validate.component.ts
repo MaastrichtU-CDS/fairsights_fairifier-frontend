@@ -15,11 +15,11 @@ export class ValidateComponent implements OnInit {
   ) { }
 
   resultsAmount;
-  sqlQuery = '';
   database = '';
 
   ngOnInit() {
     this.messageService.changeMessage('');
+    this.validateService.getSqlQuery();
   }
 
     amountChanged(newAmount) {
@@ -28,15 +28,17 @@ export class ValidateComponent implements OnInit {
 
     databaseChanged(newDatabase) {
         this.database = newDatabase.target.value;
+        this.messageService.changeMessage('New database')
     }
 
     sqlChanged(newQuery) {
-        this.sqlQuery = newQuery.target.value;
+        this.validateService.currentQuery = newQuery.target.value;
+        this.messageService.changeMessage('Query changed')
     }
 
     testData() {
         if (this.resultsAmount != undefined) {
-            this.validateService.testSqlQuery(this.resultsAmount, this.database, this.sqlQuery);
+            this.validateService.testSqlQuery(this.resultsAmount, this.database, this.validateService.currentQuery);
         } else {
             this.messageService.changeMessage('Please insert a results amount')
         }
