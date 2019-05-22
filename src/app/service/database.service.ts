@@ -15,15 +15,16 @@ export class DatabaseService {
 
     private options = { headers: new HttpHeaders().set('Content-Type', 'application/json')};
 
-    addDatabase(dataSource) {
+    addDatabase(dataSource, databaseName) {
         const extraUrl = '/datasource/add';
         const url = environment.apiUrl + extraUrl;
+        console.log(databaseName)
 
         return this.http.post(url, dataSource, this.options)
             .subscribe(
                 data => {
                     console.log('Adding Database Succesful', data),
-                    this.messageService.changeMessage('Adding database is succesful');
+                    this.messageService.changeMessage('Adding database ' + databaseName +' is succesful');
                 },
 
                 error => {

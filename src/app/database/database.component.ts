@@ -34,13 +34,10 @@ export class DatabaseComponent implements OnInit {
             result.url = result.url.replace(/\\/g, '\\\\');
             this.driverUrl = this.getByName(result.format);
             result.url =  this.driverUrl + result.url;
-            console.log(result.url);
             this.dataSource = '{ \"driver\": \"' + result.format + '\", \"name\": \"' +
             result.databasename + '\", \"password\": \"' + result.password + '\", \"url\": \"' +
             result.url + '\", \"username\": \"' + result.username + '\" }';
-            console.log(this.dataSource);
-
-            this.databaseService.addDatabase(this.dataSource);
+            this.databaseService.addDatabase(this.dataSource, result.databasename);
 
         }) .catch ((error) => {
             console.log(error);
