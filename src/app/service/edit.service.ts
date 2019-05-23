@@ -4,16 +4,16 @@ import { MessageService } from '../service/message.service';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class EditService {
 
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) { }
+    constructor(
+        private http: HttpClient,
+        private messageService: MessageService
+    ) { }
 
-  mappingDefinitionChanged = '';
+    mappingDefinitionChanged = '';
 
     testMappingDefinitions() {
         console.log('Mapping definition testing is not yet implemented');

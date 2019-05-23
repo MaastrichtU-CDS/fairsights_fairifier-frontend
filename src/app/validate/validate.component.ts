@@ -9,20 +9,20 @@ import { ValidateService } from '../service/validate.service';
 })
 export class ValidateComponent implements OnInit {
 
-  constructor(
-      public validateService: ValidateService,
-      public messageService: MessageService
-  ) { }
+    constructor(
+        public validateService: ValidateService,
+        public messageService: MessageService
+    ) { }
 
-  resultsAmount;
-  database = '';
+    resultsAmount;
+    database = '';
 
-  ngOnInit() {
-    this.messageService.changeMessage('');
-    this.validateService.getSqlQuery();
-    this.messageService.validateTestSuccesful = false;
-    this.validateService.valueChanged = false;
-  }
+    ngOnInit() {
+        this.messageService.changeMessage('');
+        this.validateService.getSqlQuery();
+        this.messageService.validateTestSuccesful = false;
+        this.validateService.valueChanged = false;
+    }
 
     amountChanged(newAmount) {
         this.resultsAmount = newAmount.target.value;

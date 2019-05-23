@@ -4,9 +4,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { DATABASEFORMATS } from '../../model/allDatabaseFormats';
 
 @Component({
-  selector: 'app-add-database-modal',
-  templateUrl: './add-database-modal.component.html',
-  styleUrls: ['./add-database-modal.component.css']
+    selector: 'app-add-database-modal',
+    templateUrl: './add-database-modal.component.html',
+    styleUrls: ['./add-database-modal.component.css']
 })
 export class AddDatabaseModalComponent implements OnInit {
 

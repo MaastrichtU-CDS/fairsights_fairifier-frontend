@@ -4,7 +4,7 @@ import { MessageService } from '../service/message.service';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DatabaseService {
 

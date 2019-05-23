@@ -4,9 +4,9 @@ import { OntologyService } from '../service/ontology.service';
 import { ONTOLOGYFORMATS, pickedOntologyFormat } from '../model/ontologyFormats';
 
 @Component({
-  selector: 'app-ontology',
-  templateUrl: './ontology.component.html',
-  styleUrls: ['./ontology.component.css']
+    selector: 'app-ontology',
+    templateUrl: './ontology.component.html',
+    styleUrls: ['./ontology.component.css']
 })
 export class OntologyComponent implements OnInit {
 

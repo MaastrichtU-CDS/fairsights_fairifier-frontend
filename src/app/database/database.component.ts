@@ -6,9 +6,9 @@ import { DatabaseService } from '../service/database.service';
 import { DATABASEFORMATS } from '../model/allDatabaseFormats';
 
 @Component({
-  selector: 'app-database',
-  templateUrl: './database.component.html',
-  styleUrls: ['./database.component.css']
+    selector: 'app-database',
+    templateUrl: './database.component.html',
+    styleUrls: ['./database.component.css']
 })
 export class DatabaseComponent implements OnInit {
 

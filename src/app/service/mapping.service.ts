@@ -4,23 +4,23 @@ import { environment } from '../../environments/environment';
 import { MessageService } from '../service/message.service';
 
 @Injectable({
-  providedIn: 'root'
+    	providedIn: 'root'
 })
 export class MappingService {
 
-  constructor(
-      private http: HttpClient,
-      private messageService: MessageService
-  ) { }
+    constructor(
+        private http: HttpClient,
+        private messageService: MessageService
+    ) { }
 
-  mappingDownload(fileType) {
-      const extraUrl = '/mapping/download?format=' + fileType;
-      const url = environment.apiUrl + extraUrl;
+    mappingDownload(fileType) {
+        const extraUrl = '/mapping/download?format=' + fileType;
+        const url = environment.apiUrl + extraUrl;
 
-      let contentDisposition;
-      let filename;
+        let contentDisposition;
+        let filename;
 
-      return this.http.get(url,
+        return this.http.get(url,
         {
             responseType: 'blob',
             observe: 'response'
@@ -33,41 +33,41 @@ export class MappingService {
                 this.downloadFile(response.body, filename)
             ),
 
-                error => (
-                    console.log(error),
-                    this.messageService.changeMessage('Downloading mapping is unsuccesful, Error: ' + error.message)
-                )
+            error => (
+                console.log(error),
+                this.messageService.changeMessage('Downloading mapping is unsuccesful, Error: ' + error.message)
+            )
         );
-  }
-
-  downloadFile(data, name) {
-    const match = navigator.userAgent.search(/(?:Edge|MSIE|Trident\/.*; rv:)/);
-    if (match !== -1) {
-        navigator.msSaveBlob(data, name);
-    } else {
-        const objectUrl: string = URL.createObjectURL(data);
-        const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-        a.href = objectUrl;
-        a.download = name;
-        document.body.appendChild(a);
-        a.click();
-
-        document.body.removeChild(a);
-        URL.revokeObjectURL(objectUrl);
     }
-  }
 
-  uploadMapping(mappingFile, currentFormat) {
-      let extraUrl = '/mapping/upload';
-      if (currentFormat !== '') {
-          extraUrl = extraUrl + '?format=' + currentFormat;
-      }
-      const formData = new FormData();
-      formData.append('file', mappingFile);
+    downloadFile(data, name) {
+        const match = navigator.userAgent.search(/(?:Edge|MSIE|Trident\/.*; rv:)/);
+        if (match !== -1) {
+            navigator.msSaveBlob(data, name);
+        } else {
+            const objectUrl: string = URL.createObjectURL(data);
+            const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+            a.href = objectUrl;
+            a.download = name;
+            document.body.appendChild(a);
+            a.click();
 
-      const url = environment.apiUrl + extraUrl;
+            document.body.removeChild(a);
+            URL.revokeObjectURL(objectUrl);
+        }
+    }
 
-      return this.http.put(url, formData)
+    uploadMapping(mappingFile, currentFormat) {
+        let extraUrl = '/mapping/upload';
+        if (currentFormat !== '') {
+            extraUrl = extraUrl + '?format=' + currentFormat;
+        }
+        const formData = new FormData();
+        formData.append('file', mappingFile);
+
+        const url = environment.apiUrl + extraUrl;
+
+        return this.http.put(url, formData)
         .subscribe(
             data => {
                 console.log('Uploading mapping is succesful ', data);
@@ -78,5 +78,5 @@ export class MappingService {
                 this.messageService.changeMessage('Uploading mapping is unsuccesful, Error: ' + error.message);
             }
         );
-  }
+    }
 }

@@ -4,16 +4,16 @@ import { MAPPINGFORMATS, pickedMappingFormat } from '../model/mappingFormats';
 import { MappingService } from '../service/mapping.service';
 
 @Component({
-  selector: 'app-mapping',
-  templateUrl: './mapping.component.html',
-  styleUrls: ['./mapping.component.css']
+    selector: 'app-mapping',
+    templateUrl: './mapping.component.html',
+    styleUrls: ['./mapping.component.css']
 })
 export class MappingComponent implements OnInit {
 
     constructor(
         public messageService: MessageService,
         public mappingService: MappingService
-        ) { }
+    ) { }
 
     @ViewChild('labelImport')
     labelImport: ElementRef;
