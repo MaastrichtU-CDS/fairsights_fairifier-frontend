@@ -7,7 +7,7 @@ export class MessageService {
 
     testString: string;
     validateTestSuccesful;
-    validateSaveSuccesful
+    validateSaveSuccesful;
 
     changeMessage(status) {
         this.testString = status;

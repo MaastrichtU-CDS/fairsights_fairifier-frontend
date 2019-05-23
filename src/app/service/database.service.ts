@@ -18,13 +18,13 @@ export class DatabaseService {
     addDatabase(dataSource, databaseName) {
         const extraUrl = '/datasource/add';
         const url = environment.apiUrl + extraUrl;
-        console.log(databaseName)
+        console.log(databaseName);
 
         return this.http.post(url, dataSource, this.options)
             .subscribe(
                 data => {
                     console.log('Adding Database Succesful', data),
-                    this.messageService.changeMessage('Adding database ' + databaseName +' is succesful');
+                    this.messageService.changeMessage('Adding database ' + databaseName + ' is succesful');
                 },
 
                 error => {

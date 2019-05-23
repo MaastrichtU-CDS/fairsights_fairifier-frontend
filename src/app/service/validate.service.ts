@@ -16,13 +16,12 @@ export class ValidateService {
     public dataArray = [];
     public dataKeyProps = [];
     queryChanged = '';
-    public currentQuery = ''
+    public currentQuery = '';
     public valueChanged;
 
     getSqlQuery() {
-        const extraUrl = '/mapping/sqlquery'
-        const totalUrl = environment.apiUrl + extraUrl
-        
+        const extraUrl = '/mapping/sqlquery';
+        const totalUrl = environment.apiUrl + extraUrl;
 
         this.http.get(totalUrl, {responseType: 'text'})
         .subscribe (
@@ -36,7 +35,7 @@ export class ValidateService {
                 console.log(error),
                 this.messageService.changeMessage('Sql unsuccesfully received: ' + error.message)
             )
-        )
+        );
     }
 
     convertData(dataKey) {
@@ -63,9 +62,9 @@ export class ValidateService {
     }
 
     changeValue() {
-        if (this.valueChanged == false) {
-            this.messageService.validateSaveSuccesful = true
-            console.log(this.messageService.validateSaveSuccesful)
+        if (this.valueChanged === false) {
+            this.messageService.validateSaveSuccesful = true;
+            console.log(this.messageService.validateSaveSuccesful);
         }
     }
 
@@ -92,7 +91,7 @@ export class ValidateService {
 
     saveSqlQuery() {
         this.queryChanged = this.currentQuery.replace(/\s/g, '%20');
-        const extraUrl = '/mapping/sqlquery?newSqlQuery=' + this.queryChanged
+        const extraUrl = '/mapping/sqlquery?newSqlQuery=' + this.queryChanged;
         const totalUrl = environment.apiUrl + extraUrl;
 
         this.http.put(totalUrl, this.currentQuery)
@@ -107,6 +106,6 @@ export class ValidateService {
                 console.log(error),
                 this.messageService.changeMessage('Query saved failed. Error: ' + error.message)
             )
-        )
+        );
     }
 }

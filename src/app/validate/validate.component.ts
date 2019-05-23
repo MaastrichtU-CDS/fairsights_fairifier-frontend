@@ -30,20 +30,20 @@ export class ValidateComponent implements OnInit {
 
     databaseChanged(newDatabase) {
         this.database = newDatabase.target.value;
-        this.messageService.changeMessage('New database')
+        this.messageService.changeMessage('New database');
     }
 
     sqlChanged(newQuery) {
         this.validateService.currentQuery = newQuery.target.value;
-        this.messageService.changeMessage('Query changed')
+        this.messageService.changeMessage('Query changed');
         this.validateService.valueChanged = true;
     }
 
     testData() {
-        if (this.resultsAmount != undefined) {
+        if (this.resultsAmount !== undefined) {
             this.validateService.testSqlQuery(this.resultsAmount, this.database, this.validateService.currentQuery);
         } else {
-            this.messageService.changeMessage('Please insert a results amount')
+            this.messageService.changeMessage('Please insert a results amount');
         }
     }
 

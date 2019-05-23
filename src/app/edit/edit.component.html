@@ -7,7 +7,7 @@
                   <div class="input-group">
                       <span class="input-gdiaroup-text w-100">Definitions</span>
                   </div>
-                  <textarea class="form-control" rows="25" aria-label="With textarea" (change)="changeMappingDefinitions($event)">{{sqlQuery}}</textarea>
+                  <textarea class="form-control" rows="25" aria-label="With textarea" (change)="changeMappingDefinitions($event)">{{editService.mappingDefinitionChanged}}</textarea>
               </div>
           </div>
         </div>

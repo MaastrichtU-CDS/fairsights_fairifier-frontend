@@ -25,7 +25,7 @@ export class OntologyService {
 
             error => {
                 console.log(error + ' error');
-                console.log(error)
+                console.log(error);
             }
         );
     }

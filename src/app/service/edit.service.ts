@@ -12,14 +12,14 @@ export class EditService {
     private http: HttpClient,
     private messageService: MessageService
   ) { }
-  
+
   mappingDefinitionChanged = '';
 
     testMappingDefinitions() {
-        console.log('Mapping definition testing is not yet implemented')
+        console.log('Mapping definition testing is not yet implemented');
     }
     saveMappingDefinitions() {
-        console.log('Mapping definitions saving is not yet implemented')   
+        console.log('Mapping definitions saving is not yet implemented');
     }
 }
 
