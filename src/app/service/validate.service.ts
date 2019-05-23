@@ -17,6 +17,7 @@ export class ValidateService {
     public dataKeyProps = [];
     queryChanged = '';
     public currentQuery = ''
+    public valueChanged;
 
     getSqlQuery() {
         const extraUrl = '/mapping/sqlquery'
@@ -61,6 +62,13 @@ export class ValidateService {
         }
     }
 
+    changeValue() {
+        if (this.valueChanged == false) {
+            this.messageService.validateSaveSuccesful = true
+            console.log(this.messageService.validateSaveSuccesful)
+        }
+    }
+
     public testSqlQuery(amount, database, query) {
         this.queryChanged = query.replace(/\s/g, '%20');
         const extraUrl = '/datasource/query?dataSourceName=' + database + '&sqlQuery=' + this.queryChanged + '&resultsLimit=' + amount;
@@ -70,11 +78,14 @@ export class ValidateService {
             .subscribe(
             response => (
                 this.messageService.changeMessage('Test Succesful'),
-                this.convertData(response)
+                this.convertData(response),
+                this.messageService.validateTestSuccesful = true,
+                this.changeValue()
             ),
             error => (
                 this.messageService.changeMessage('Test Unsuccesful: ' + error.message),
-                console.log(error)
+                console.log(error),
+                this.messageService.validateTestSuccesful = false
             )
         );
     }
@@ -87,8 +98,9 @@ export class ValidateService {
         this.http.put(totalUrl, this.currentQuery)
         .subscribe(
             response => (
-                this.messageService.changeMessage('Query Save Successful'),
-                console.log(response)
+                this.messageService.changeMessage('Query Save Succesful'),
+                console.log(response),
+                this.messageService.validateSaveSuccesful = true
             ),
 
             error => (

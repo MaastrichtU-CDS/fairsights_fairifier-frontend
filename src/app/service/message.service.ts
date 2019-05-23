@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class MessageService {
 
     testString: string;
+    validateTestSuccesful;
+    validateSaveSuccesful
 
     changeMessage(status) {
         this.testString = status;

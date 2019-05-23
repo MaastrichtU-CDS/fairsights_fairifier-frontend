@@ -20,6 +20,8 @@ export class ValidateComponent implements OnInit {
   ngOnInit() {
     this.messageService.changeMessage('');
     this.validateService.getSqlQuery();
+    this.messageService.validateTestSuccesful = false;
+    this.validateService.valueChanged = false;
   }
 
     amountChanged(newAmount) {
@@ -34,6 +36,7 @@ export class ValidateComponent implements OnInit {
     sqlChanged(newQuery) {
         this.validateService.currentQuery = newQuery.target.value;
         this.messageService.changeMessage('Query changed')
+        this.validateService.valueChanged = true;
     }
 
     testData() {

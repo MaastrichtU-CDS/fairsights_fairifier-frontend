@@ -36,7 +36,7 @@
         <div class="col-md-3">
             <button (click)="testData()" class="btn btn-secondary btn-block">Test Sql Query</button>
             <br>
-            <button (click)="saveData()" class="btn btn-secondary btn-block">Save Sql Query</button>
+            <button  [disabled]='!messageService.validateTestSuccesful'  (click)="saveData()" class="btn btn-secondary btn-block">Save Sql Query</button>
             <br>
             <div class="input-group">
                 <div class="input-group-prepend">
