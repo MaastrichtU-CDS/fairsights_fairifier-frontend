@@ -1,3 +1,40 @@
 <div class="container-fluid" style="margin-top: 70px;">
-    edit works!
-</div>
+        <div class="row justify-content-around h-100">
+      
+          <div  class="col-md-3">
+              <div class="row">
+              <div class="input-group">
+                  <div class="input-group">
+                      <span class="input-gdiaroup-text w-100">Definitions</span>
+                  </div>
+                  <textarea class="form-control" rows="25" aria-label="With textarea" (change)="changeMappingDefinitions($event)">{{sqlQuery}}</textarea>
+              </div>
+          </div>
+        </div>
+      
+      <br>
+      <div  class="col-md-6">
+      </div>
+      
+              <div class="col-md-3">
+                  <button [disabled]='!messageService.validateSaveSuccesful' (click)="testMappingDefinitions()" class="btn btn-secondary btn-block">Test Definitions</button>
+                  <br>
+                  <button (click)="saveMappingDefinitions()" class="btn btn-secondary btn-block">Save Definitions</button>
+                  <br>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <label for="inputTargetDatabase" class="input-group-text "> Database </label>
+                      </div>
+                      <input type="text" class="form-control" id="inputTargetDatabase" (change)="changeUsedDatabase($event)">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <label for="inputAmountResults" class="input-group-text "> Results Amount </label>
+                      </div>
+                      <input type="text" class="form-control"  pattern="[0-9]*" id="inputAmountResults" (change)="changeResultsAmount($event)">
+                  </div>
+                  {{messageService.testString}}
+              </div>
+          </div>
+      </div>
