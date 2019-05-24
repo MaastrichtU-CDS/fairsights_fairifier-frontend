@@ -52,7 +52,7 @@ export class MappingComponent implements OnInit {
     }
 
     formatChanged(newMappingFormat) {
-        this.selectedFormat = this.allMappingFormats.filter(function(Format) { return Format.shortName === newMappingFormat; });
+        this.selectedFormat = this.allMappingFormats.filter((Format) => Format.shortName === newMappingFormat );
         this.messageService.changeMessage('Format Changed: ' + this.selectedFormat[0].fullName);
     }
 

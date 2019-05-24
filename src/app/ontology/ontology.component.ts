@@ -70,7 +70,8 @@ export class OntologyComponent implements OnInit {
     }
 
     formatChanged(newFormat) {
-        this.selectedFormat = this.allOntologyFormats.filter(function(Format) { return Format.shortName === newFormat; });
+        this.selectedFormat = this.allOntologyFormats.filter((Format) =>  Format.shortName === newFormat );
+
         this.messageService.changeMessage('Format Changed: ' + this.selectedFormat[0].fullName );
     }
 }
