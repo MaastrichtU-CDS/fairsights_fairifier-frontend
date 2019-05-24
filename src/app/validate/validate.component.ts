@@ -22,6 +22,8 @@ export class ValidateComponent implements OnInit {
         this.validateService.getSqlQuery();
         this.messageService.validateTestSuccesful = false;
         this.validateService.valueChanged = false;
+        this.validateService.dataArray = [];
+        this.validateService.dataKeyProps = [];
     }
 
     amountChanged(newAmount) {
@@ -40,10 +42,10 @@ export class ValidateComponent implements OnInit {
     }
 
     testData() {
-        if (this.resultsAmount !== undefined) {
+        if (this.resultsAmount !== undefined && this.resultsAmount !== '' && this.database !== '') {
             this.validateService.testSqlQuery(this.resultsAmount, this.database, this.validateService.currentQuery);
         } else {
-            this.messageService.changeMessage('Please insert a results amount');
+            this.messageService.changeMessage('Please insert a results amount and a database');
         }
     }
 
