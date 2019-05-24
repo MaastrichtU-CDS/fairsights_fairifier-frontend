@@ -30,7 +30,7 @@ export class EditComponent implements OnInit {
     saveMappingDefinitions() {
         this.messageService.changeMessage('Mapping Definitions Save');
         console.log('save mapping definitions');
-        this.editService.testMappingDefinitions();
+        this.editService.saveMappingDefinitions();
     }
 
     testMappingDefinitions() {
