@@ -46,7 +46,7 @@ export class ValidateComponent implements OnInit {
             if (this.validateService.currentQuery !== undefined && this.validateService.currentQuery !== '') {
                 this.validateService.testSqlQuery(this.resultsAmount, this.database, this.validateService.currentQuery);
             } else {
-                this.messageService.changeMessage('Please insert a Sql Query')
+                this.messageService.changeMessage('Please insert a Sql Query');
             }
         } else {
             this.messageService.changeMessage('Please insert a results amount and a database');
