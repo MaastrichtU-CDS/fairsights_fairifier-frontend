@@ -37,16 +37,15 @@ export class EditComponent implements OnInit {
 
     testMappingDefinitions() {
         if ( this.databaseName !== undefined && this.databaseName !== '' && this.resultsAmount !== undefined && this.resultsAmount !== '') {
-            if ( this.editService.mappingDefinitionChanged !== undefined && this.editService.mappingDefinitionChanged !== '')
-            {
+            if ( this.editService.mappingDefinitionChanged !== undefined && this.editService.mappingDefinitionChanged !== '') {
                 this.messageService.changeMessage('Mapping Definitions Test'),
                 this.editService.testMappingDefinitions();
             } else {
-                this.messageService.changeMessage('Please insert mapping definitions')
+                this.messageService.changeMessage('Please insert mapping definitions');
             }
 
         } else {
-            this.messageService.changeMessage('Please insert a database and result amount')
+            this.messageService.changeMessage('Please insert a database and result amount');
         }
     }
 

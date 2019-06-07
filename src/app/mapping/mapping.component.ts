@@ -58,6 +58,6 @@ export class MappingComponent implements OnInit {
 
     toggleChoosenFormat(e) {
         this.useChosenFormat = e.target.checked;
-        this.messageService.changeMessage("Use this format for uploading: " + this.useChosenFormat);
+        this.messageService.changeMessage('Use this format for uploading: ' + this.useChosenFormat);
     }
 }
