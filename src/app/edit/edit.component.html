@@ -19,7 +19,7 @@
         <div class="col-md-3">
             <button [disabled]='!messageService.validateSaveSuccesful' (click)="testMappingDefinitions()" class="btn btn-secondary btn-block">Test Definitions</button>
             <br>
-            <button [disabled]='!messageService.validateSaveSuccesful' (click)="saveMappingDefinitions()" class="btn btn-secondary btn-block">Save Definitions</button>
+            <button [disabled]='!editService.testSuccesful' (click)="saveMappingDefinitions()" class="btn btn-secondary btn-block">Save Definitions</button>
             <br>
             <div class="input-group">
                 <div class="input-group-prepend">

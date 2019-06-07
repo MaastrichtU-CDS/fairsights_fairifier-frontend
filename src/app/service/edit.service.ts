@@ -13,10 +13,13 @@ export class EditService {
         private messageService: MessageService
     ) { }
 
+    public testSuccesful;
+
     mappingDefinitionChanged = '';
 
     testMappingDefinitions() {
         console.log('Mapping definition testing is not yet implemented');
+        this.testSuccesful = true;
     }
     saveMappingDefinitions() {
         console.log('Mapping definitions saving is not yet implemented');
