@@ -59,7 +59,7 @@ export class MappingService {
 
     uploadMapping(mappingFile, currentFormat) {
         let extraUrl = '/mapping/upload';
-        if (currentFormat !== '') {
+        if (currentFormat !== 'No Format') {
             extraUrl = extraUrl + '?format=' + currentFormat;
         }
         const formData = new FormData();

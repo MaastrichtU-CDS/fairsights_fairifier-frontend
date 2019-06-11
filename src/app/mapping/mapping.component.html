@@ -8,19 +8,16 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Format</label>
                 </div>
-                <select class="custom-select col-sm-11" id="inputGroupSelectMapping01"  (change)="formatChanged($event.target.value)">
-                    <option *ngFor = "let mappingFormat of allMappingFormats"
-                        [selected]="mappingFormat.fullName == selectedFormat[0].fullName"
-                        [value]="mappingFormat.shortName">
-                        {{mappingFormat.fullName}} ({{mappingFormat.extension}})
+                <select class="custom-select col-sm-11" id="inputGroupSelectMapping01"  (change)="formatChangedDownload($event.target.value)">
+                    <option *ngFor = "let mappingFormatDownload of allMappingFormats"
+                        [selected]="mappingFormatDownload.fullName == selectedFormatDownload[0].fullName"
+                        [value]="mappingFormatDownload.shortName">
+                        {{mappingFormatDownload.fullName}} ({{mappingFormatDownload.extension}})
                     </option>
                 </select>
                 <br>
                 <label class="container"> 
-                    <div class="input-group mb-3">
-                        <input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
-                        Use this format for uploading?
-                    </div>
+                    {{messageService.testString}}
                 </label>
             </div>
         </div>
@@ -36,7 +33,21 @@
             </div>
 
             <br>
-            {{messageService.testString}}
+            <br>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Format</label>
+                </div>
+                <select class="custom-select col-sm-11" id="inputGroupSelectMapping01"  (change)="formatChangedUpload($event.target.value)">
+                    <option *ngFor = "let mappingFormatUpload of allMappingFormats"
+                        [selected]="mappingFormatUpload.fullName == selectedFormatUpload[0].fullName"
+                        [value]="mappingFormatUpload.shortName">
+                        {{mappingFormatUpload.fullName}} ({{mappingFormatUpload.extension}})
+                    </option>
+                </select>
+            </div>
+
         </div>    
     </div>
 </div>

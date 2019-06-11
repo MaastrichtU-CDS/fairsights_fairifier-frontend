@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MessageService } from '../service/message.service';
-import { MAPPINGFORMATS, pickedMappingFormat } from '../model/mappingFormats';
+import { MAPPINGFORMATS, pickedMappingFormatUpload, pickedMappingFormatDownload } from '../model/mappingFormats';
 import { MappingService } from '../service/mapping.service';
 
 @Component({
@@ -18,18 +18,23 @@ export class MappingComponent implements OnInit {
     @ViewChild('labelImport')
     labelImport: ElementRef;
     mappingFile: any;
-    useChosenFormat = false;
     inputStatus = null;
     allMappingFormats = MAPPINGFORMATS;
-    selectedFormat = pickedMappingFormat;
-    currentUrl = '';
+    selectedFormatUpload = pickedMappingFormatUpload;
+    selectedFormatDownload = pickedMappingFormatDownload;
 
     ngOnInit() {
         this.messageService.changeMessage('');
     }
 
     downloadMapping() {
-        this.mappingService.mappingDownload(this.selectedFormat[0].shortName);
+        console.log(this.selectedFormatDownload)
+        if ( this.selectedFormatDownload[0].fullName !== 'No Format Selected' ) {
+            this.mappingService.mappingDownload(this.selectedFormatDownload[0].shortName);
+        } else {
+            this.messageService.changeMessage('Please select a format for Downloading')
+        }
+        
     }
 
     mappingFileUpload($event) {
@@ -41,23 +46,19 @@ export class MappingComponent implements OnInit {
 
     mappingUpload() {
         if (this.mappingFile !== undefined) {
-            if (this.useChosenFormat === true) {
-                this.mappingService.uploadMapping(this.mappingFile, this.selectedFormat[0].shortName);
-            } else {
-                this.mappingService.uploadMapping(this.mappingFile, '');
-            }
+            this.mappingService.uploadMapping(this.mappingFile, this.selectedFormatUpload[0].shortName);
         } else {
             this.messageService.changeMessage('Please choose a file to upload');
         }
     }
 
-    formatChanged(newMappingFormat) {
-        this.selectedFormat = this.allMappingFormats.filter((Format) => Format.shortName === newMappingFormat );
-        this.messageService.changeMessage('Format Changed: ' + this.selectedFormat[0].fullName);
+    formatChangedUpload(newMappingFormat) {
+        this.selectedFormatUpload = this.allMappingFormats.filter((Format) => Format.shortName === newMappingFormat );
+        this.messageService.changeMessage('Format Changed: ' + this.selectedFormatUpload[0].fullName);
     }
 
-    toggleChoosenFormat(e) {
-        this.useChosenFormat = e.target.checked;
-        this.messageService.changeMessage('Use this format for uploading: ' + this.useChosenFormat);
+    formatChangedDownload(newMappingFormat) {
+        this.selectedFormatDownload = this.allMappingFormats.filter((Format) => Format.shortName === newMappingFormat );
+        this.messageService.changeMessage('Format Changed: ' + this.selectedFormatDownload[0].fullName);
     }
 }

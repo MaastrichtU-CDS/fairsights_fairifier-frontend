@@ -1,7 +1,8 @@
 import { MappingFormat } from './format';
 
 export const MAPPINGFORMATS: MappingFormat[] = [
-    { fullName: 'BinaryRDF', shortName: 'BINARY', extension: '.bdf'},
+    { fullName: 'No Format Selected', shortName: 'No Format', extension: ''},
+    { fullName: 'BinaryRDF', shortName: 'BINARY', extension: '.brf'},
     { fullName: 'JSON-LD', shortName: 'JSONLD', extension: '.jsonld'},
     { fullName: 'N3', shortName: 'N3', extension: '.n3'},
     { fullName: 'N-Quads', shortName: 'NQUADS', extension: '.nq'},
@@ -14,6 +15,10 @@ export const MAPPINGFORMATS: MappingFormat[] = [
     { fullName: 'Turtle', shortName: 'TURTLE', extension: '.ttl'}
 ];
 
-export const pickedMappingFormat: MappingFormat[] = [
-    { fullName: 'N3', shortName: 'N3', extension: '.n3'}
+export const pickedMappingFormatDownload: MappingFormat[] = [
+    { fullName: 'No Format Selected', shortName: 'No Format', extension: '' }
+];
+
+export const pickedMappingFormatUpload: MappingFormat[] = [
+    { fullName: 'No Format Selected', shortName: 'No Format', extension: '' }
 ];
