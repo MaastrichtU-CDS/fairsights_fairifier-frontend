@@ -14,6 +14,7 @@ import { ValidateComponent } from './validate/validate.component';
 import { EditComponent } from './edit/edit.component';
 import { ResultComponent } from './result/result.component';
 import { AddDatabaseModalComponent } from './modal/add-database-modal/add-database-modal.component';
+import { AddOntologyModalComponent } from './modal/add-ontology-modal/add-ontology-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddDatabaseModalComponent } from './modal/add-database-modal/add-databa
     ValidateComponent,
     EditComponent,
     ResultComponent,
-    AddDatabaseModalComponent
+    AddDatabaseModalComponent,
+    AddOntologyModalComponent
   ],
   imports: [
     BrowserModule,
