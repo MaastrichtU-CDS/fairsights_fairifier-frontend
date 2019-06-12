@@ -1,6 +1,7 @@
 import { OntologyFormat } from './format';
 
 export const ONTOLOGYFORMATS: OntologyFormat[] = [
+    { fullName: 'No Format Selected', shortName: 'No Format', extension: '' },
     { fullName: 'Web Ontology Language', shortName: 'OWL' , extension: '.owl'},
     { fullName: 'BinaryRDF', shortName: 'BINARY', extension: '.bdf'},
     { fullName: 'JSON-LD', shortName: 'JSONLD', extension: '.jsonld'},
@@ -16,5 +17,5 @@ export const ONTOLOGYFORMATS: OntologyFormat[] = [
 ];
 
 export const  pickedOntologyFormat: OntologyFormat[] = [
-    { fullName: 'Web Ontology Language', shortName: 'OWL' , extension: '.fo1'},
+    { fullName: 'No Format Selected', shortName: 'No Format', extension: '' }
 ];

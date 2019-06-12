@@ -13,6 +13,7 @@ import { DatabaseComponent } from './database/database.component';
 import { ValidateComponent } from './validate/validate.component';
 import { EditComponent } from './edit/edit.component';
 import { ResultComponent } from './result/result.component';
+
 import { AddDatabaseModalComponent } from './modal/add-database-modal/add-database-modal.component';
 import { AddOntologyModalComponent } from './modal/add-ontology-modal/add-ontology-modal.component';
 
@@ -39,6 +40,6 @@ import { AddOntologyModalComponent } from './modal/add-ontology-modal/add-ontolo
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddDatabaseModalComponent]
+  entryComponents: [AddDatabaseModalComponent, AddOntologyModalComponent]
 })
 export class AppModule { }
