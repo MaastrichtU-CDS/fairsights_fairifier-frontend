@@ -14,6 +14,7 @@ export class AddOntologyModalComponent implements OnInit {
     myForm: FormGroup;
     allFormats = ONTOLOGYFORMATS;
     ontologyFile: any;
+    fileType: string;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -44,12 +45,14 @@ export class AddOntologyModalComponent implements OnInit {
     }
 
     toggleInput(currentInput) {
-        this.myForm.value.inputType = currentInput
+        this.fileType = currentInput
     }
 
     public submitForm() {
         this.myForm.value.file = this.ontologyFile;
+        this.myForm.value.inputType = this.fileType
         if  (this.myForm.value.inputType === '' || this.myForm.value.inputType === undefined)  {
+            console.log(this.myForm.value)
             this.messageService.changeMessage('Please select either a url or a file')
         } else {
             if ((this.myForm.value.inputType === 'File' && (this.myForm.value.file !== undefined && this.myForm.value.file !== '') ) || (this.myForm.value.inputType === 'Url' && (this.myForm.value.url !== '' && this.myForm.value.url !== undefined))  ) {
