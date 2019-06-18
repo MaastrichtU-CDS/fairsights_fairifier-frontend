@@ -13,36 +13,15 @@ export class OntologyService {
         private messageService: MessageService
     ) { }
 
-    uploadOntologyFile(ontologyFile, fileFormat, useFileFormat ) {
-        const extraUrl = '/ontology/import/file';
-        const totalUrl = environment.apiUrl + extraUrl;
-        console.log( 'Not yet implement');
-        return this.http.post(totalUrl, '')
-        .subscribe(
-            data => {
-                console.log(data + ' success');
-            },
-
-            error => {
-                console.log(error + ' error');
-                console.log(error);
-            }
-        );
+    uploadOntologyFile(ontologyFile, fileFormat, baseUri ) {
+        console.log(ontologyFile),
+        console.log(fileFormat),
+        console.log(baseUri)
     }
 
-    uploadOntologyUrl(ontologyUrl, fileFormat, useFileFormat) {
-        const extraUrl = '/ontology/import/url';
-        const totalUrl = environment.apiUrl + extraUrl;
-        console.log('Not yet implemented');
-        return this.http.post(totalUrl, '')
-        .subscribe(
-            data => {
-                console.log(data + ' success');
-            },
-
-            error => {
-                console.log( error + ' error' );
-            }
-        );
+    uploadOntologyUrl(ontologyUrl, fileFormat, baseUri ) {
+        console.log(ontologyUrl),
+        console.log(fileFormat),
+        console.log(baseUri)
     }
 }

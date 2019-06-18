@@ -27,11 +27,18 @@
             </div>
 
             <div class="form-group">
+            <label for='baseUri'>Base Uri</label>
+            <input type="text"
+                class="form-control"
+                formControlName='baseUri'/>
+        </div>
+
+            <div class="form-group">
                 <label for="format">Format</label>
                 <select class="form-control"
                     formControlName="format">
                     <option *ngFor="let string of allFormats">
-                        {{string.fullName}} ({{string.extension}})
+                        {{string.fullName}}
                     </option>
                 </select>
             </div>

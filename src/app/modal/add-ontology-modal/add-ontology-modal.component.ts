@@ -37,6 +37,7 @@ export class AddOntologyModalComponent implements OnInit {
             file: '',
             format: 'No Format Selected',
             inputType: '',
+            baseUri: ''
         });
     }
 
@@ -52,11 +53,14 @@ export class AddOntologyModalComponent implements OnInit {
         this.myForm.value.file = this.ontologyFile;
         this.myForm.value.inputType = this.fileType
         if  (this.myForm.value.inputType === '' || this.myForm.value.inputType === undefined)  {
-            console.log(this.myForm.value)
             this.messageService.changeMessage('Please select either a url or a file')
         } else {
             if ((this.myForm.value.inputType === 'File' && (this.myForm.value.file !== undefined && this.myForm.value.file !== '') ) || (this.myForm.value.inputType === 'Url' && (this.myForm.value.url !== '' && this.myForm.value.url !== undefined))  ) {
+                if (this.myForm.value.baseUri !== '' && this.myForm.value.baseUri !== undefined) {
                 this.activeModal.close(this.myForm.value);
+                } else {
+                    this.messageService.changeMessage('Please insert a base Uri')
+                }
             } else {
                 this.messageService.changeMessage('Please insert a file/url')
             }
