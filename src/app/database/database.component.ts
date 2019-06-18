@@ -38,6 +38,7 @@ export class DatabaseComponent implements OnInit {
             result.databasename + '\", \"password\": \"' + result.password + '\", \"url\": \"' +
             result.url + '\", \"username\": \"' + result.username + '\" }';
             this.databaseService.addDatabase(this.dataSource, result.databasename);
+            this.databaseService.getDatabase();
 
         }) .catch ((error) => {
             console.log(error);
@@ -46,5 +47,6 @@ export class DatabaseComponent implements OnInit {
 
     ngOnInit() {
         this.messageService.changeMessage('');
+        this.databaseService.getDatabase();
     }
 }

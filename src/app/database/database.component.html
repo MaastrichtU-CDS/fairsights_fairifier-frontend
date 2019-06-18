@@ -7,3 +7,28 @@
         {{messageService.testString}}
     </div>
 </div>
+<br>
+
+<div  class="row">
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Url</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                                <tr *ngFor="let x of databaseService.databaseArray; let i = index">
+                                    <td>{{i + 1}}</td>
+                                    <td>{{x.name}}</td>
+                                    <td>{{x.url}}</td>
+                                </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div> 

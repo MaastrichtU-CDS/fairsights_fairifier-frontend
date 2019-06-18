@@ -14,15 +14,16 @@ export class DatabaseService {
     ) { }
 
     private options = { headers: new HttpHeaders().set('Content-Type', 'application/json')};
+    public databaseArray = [];
 
     addDatabase(dataSource, databaseName) {
         const extraUrl = '/datasource/add';
         const url = environment.apiUrl + extraUrl;
-        console.log(databaseName);
 
         return this.http.post(url, dataSource, this.options)
             .subscribe(
                 data => {
+                    this.getDatabase(),
                     console.log('Adding Database Succesful', data),
                     this.messageService.changeMessage('Adding database ' + databaseName + ' is succesful');
                 },
@@ -33,4 +34,23 @@ export class DatabaseService {
                 }
             );
         }
+
+    getDatabase() {
+        const extraUrl = '/datasources'
+        const url = environment.apiUrl + extraUrl;
+
+        return this.http.get(url) 
+            .subscribe(
+                data => {
+                    this.putDatabasesInArray(data)                
+                },
+                error => {
+                    console.log('Error: ', error)
+                }   
+            )
+    }
+
+    putDatabasesInArray(inputArray) {
+        this.databaseArray = inputArray
+    }
 }
