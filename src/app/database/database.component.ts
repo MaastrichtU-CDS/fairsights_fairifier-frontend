@@ -18,7 +18,7 @@ export class DatabaseComponent implements OnInit {
     constructor(
         public messageService: MessageService,
         private modalService: NgbModal,
-        private databaseService: DatabaseService
+        public databaseService: DatabaseService
     ) { }
 
     private getByName(nameDriver) {
