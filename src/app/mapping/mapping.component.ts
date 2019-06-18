@@ -28,13 +28,13 @@ export class MappingComponent implements OnInit {
     }
 
     downloadMapping() {
-        console.log(this.selectedFormatDownload)
+        console.log(this.selectedFormatDownload);
         if ( this.selectedFormatDownload[0].fullName !== 'No Format Selected' ) {
             this.mappingService.mappingDownload(this.selectedFormatDownload[0].shortName);
         } else {
-            this.messageService.changeMessage('Please select a format for Downloading')
+            this.messageService.changeMessage('Please select a format for Downloading');
         }
-        
+
     }
 
     mappingFileUpload($event) {

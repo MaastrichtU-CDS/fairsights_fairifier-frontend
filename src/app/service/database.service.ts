@@ -36,21 +36,21 @@ export class DatabaseService {
         }
 
     getDatabase() {
-        const extraUrl = '/datasources'
+        const extraUrl = '/datasources';
         const url = environment.apiUrl + extraUrl;
 
-        return this.http.get(url) 
+        return this.http.get(url)
             .subscribe(
                 data => {
-                    this.putDatabasesInArray(data)                
+                    this.putDatabasesInArray(data);
                 },
                 error => {
-                    console.log('Error: ', error)
-                }   
-            )
+                    console.log('Error: ', error);
+                }
+            );
     }
 
     putDatabasesInArray(inputArray) {
-        this.databaseArray = inputArray
+        this.databaseArray = inputArray;
     }
 }

@@ -16,12 +16,12 @@ export class OntologyService {
     uploadOntologyFile(ontologyFile, fileFormat, baseUri ) {
         console.log(ontologyFile),
         console.log(fileFormat),
-        console.log(baseUri)
+        console.log(baseUri);
     }
 
     uploadOntologyUrl(ontologyUrl, fileFormat, baseUri ) {
         console.log(ontologyUrl),
         console.log(fileFormat),
-        console.log(baseUri)
+        console.log(baseUri);
     }
 }

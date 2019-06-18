@@ -28,17 +28,17 @@ export class OntologyComponent implements OnInit {
         const modalRef = this.modalService.open(AddOntologyModalComponent);
         modalRef.result.then((result) => {
             this.messageService.changeMessage(''),
-            this.uploadOntology(result)
+            this.uploadOntology(result);
                 }) .catch ((error) => {
             console.log(error);
         });
     }
 
     uploadOntology(result) {
-        if (result.inputType == 'File') {
+        if (result.inputType === 'File') {
             this.ontologyService.uploadOntologyFile(result.file, result.format, result.baseUri);
         } else {
-            console.log(result)
+            console.log(result);
             this.ontologyService.uploadOntologyUrl(result.url, result.format, result.baseUri);
         }
     }
