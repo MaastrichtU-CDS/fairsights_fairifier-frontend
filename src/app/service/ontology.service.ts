@@ -37,14 +37,45 @@ export class OntologyService {
     }
 
     uploadOntologyFile(ontologyFile, fileFormat, baseUri ) {
-        console.log(ontologyFile),
-        console.log(fileFormat),
-        console.log(baseUri);
+        if (fileFormat === 'OWL') {
+            fileFormat = 'RDFXML'
+        }
+        const extraUrl = '/ontology/import/file?baseUri='
+        const baseUriUrl = this.convertUrl(baseUri)
+        const formData = new FormData();
+        formData.append('file', ontologyFile)
+        var formatUrl
+        if (fileFormat !== 'No Format Selected' && fileFormat !== 'No Format') {
+            formatUrl = '&format=' + fileFormat
+        } else {
+            formatUrl = ''
+        }
+        const url = environment.apiUrl + extraUrl + baseUriUrl + formatUrl
+        this.http.post(url, formData)
+        .subscribe(
+            data => {
+                console.log(data)
+                this.messageService.changeMessage('Uploading Ontologyfile succesfull')
+            },
+            error => {
+                console.log(error),
+                this.messageService.changeMessage('Error: ' + error.message)
+            }
+        )
+
     }
 
     uploadOntologyUrl(ontologyUrl, fileFormat, baseUri ) {
-        console.log(ontologyUrl),
-        console.log(fileFormat),
-        console.log(baseUri);
+        const extraUrl = '/ontology/import/url?url='
+        var abc = 'abcdefg'
+        abc = this.convertUrl(abc)
+        console.log(abc)
+    }
+    
+    convertUrl(conversion) {
+        conversion = conversion.replace(/\$/g, "%24").replace(/\&/g, "%26").replace(/\+/g, "%2B")
+        .replace(/\,/g, "%2C").replace(/\//g, "%2F").replace(/\:/g, "%3A").replace(/\;/g, "%3B")
+        .replace(/\=/g, "%3D").replace(/\?/g, "%3F").replace(/\@/g, "%40");
+        return conversion
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ONTOLOGYFORMATS } from '../../model/ontologyFormats';
@@ -15,6 +15,9 @@ export class AddOntologyModalComponent implements OnInit {
     allFormats = ONTOLOGYFORMATS;
     ontologyFile: any;
     fileType: string;
+
+    @ViewChild('labelImport')
+    labelImport: ElementRef;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -43,6 +46,7 @@ export class AddOntologyModalComponent implements OnInit {
 
     fileChanged(file) {
         this.ontologyFile = file.target.files[0];
+        this.labelImport.nativeElement.innerText = file.target.files[0].name
     }
 
     toggleInput(currentInput) {

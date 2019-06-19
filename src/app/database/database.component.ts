@@ -41,7 +41,8 @@ export class DatabaseComponent implements OnInit {
             this.databaseService.getDatabase();
 
         }) .catch ((error) => {
-            console.log(error);
+            console.log(error),
+            this.messageService.changeMessage(error.message)
         });
     }
 
