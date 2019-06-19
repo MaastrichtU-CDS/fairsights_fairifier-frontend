@@ -22,6 +22,7 @@ export class OntologyComponent implements OnInit {
 
     ngOnInit() {
         this.messageService.changeMessage('');
+        this.ontologyService.getOntologies();
     }
 
     openOntologyModal() {
