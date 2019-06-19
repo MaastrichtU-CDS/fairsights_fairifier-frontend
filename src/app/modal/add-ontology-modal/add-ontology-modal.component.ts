@@ -61,14 +61,19 @@ export class AddOntologyModalComponent implements OnInit {
         } else {
             if ((this.myForm.value.inputType === 'File' && (this.myForm.value.file
                 !== undefined && this.myForm.value.file !== '') ) ||
-                (this.myForm.value.inputType === 'Url' && (this.myForm.value.url !== '' && this.myForm.value.url !== undefined))  ) {
+                (this.myForm.value.inputType === 'Url' && (this.myForm.value.url !== '' && this.myForm.value.url !== undefined 
+                && this.myForm.value.format !== 'No Format Selected' && this.myForm.value.format !== 'No Format'))  ) {
                 if (this.myForm.value.baseUri !== '' && this.myForm.value.baseUri !== undefined) {
                 this.activeModal.close(this.myForm.value);
                 } else {
                     this.messageService.changeMessage('Please insert a base Uri');
                 }
             } else {
+                if(this.myForm.value.baseUri !== '' && this.myForm.value.baseUri !== undefined) {
+                    this.messageService.changeMessage('Please select a format when using ontology')
+                } else {
                 this.messageService.changeMessage('Please insert a file/url');
+                }
             }
         }
     }
