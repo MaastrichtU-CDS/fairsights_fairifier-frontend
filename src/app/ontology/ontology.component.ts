@@ -39,7 +39,6 @@ export class OntologyComponent implements OnInit {
         if (result.inputType === 'File') {
             this.ontologyService.uploadOntologyFile(result.file, result.format, result.baseUri);
         } else {
-            console.log(result);
             this.ontologyService.uploadOntologyUrl(result.url, result.format, result.baseUri);
         }
     }

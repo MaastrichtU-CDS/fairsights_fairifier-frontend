@@ -55,7 +55,7 @@ export class OntologyService {
         .subscribe(
             data => {
                 console.log(data)
-                this.messageService.changeMessage('Uploading Ontologyfile succesfull')
+                this.messageService.changeMessage('Uploading Ontologyfile successful')
             },
             error => {
                 console.log(error),
@@ -66,10 +66,25 @@ export class OntologyService {
     }
 
     uploadOntologyUrl(ontologyUrl, fileFormat, baseUri ) {
+        if (fileFormat === 'OWL') {
+            fileFormat = 'RDFXML'
+        }
         const extraUrl = '/ontology/import/url?url='
-        var abc = 'abcdefg'
-        abc = this.convertUrl(abc)
-        console.log(abc)
+        const urlOntology = this.convertUrl(ontologyUrl)
+        const baseUriUrl = '&baseUri=' + this.convertUrl(baseUri)
+        const formatUrl = '&format=' + fileFormat
+        const url = environment.apiUrl + extraUrl + urlOntology + baseUriUrl + formatUrl
+        this.http.post(url, '') 
+        .subscribe(
+            data => {
+                console.log(data),
+                this.messageService.changeMessage('Ontology url upload succesfull')
+            },
+            error => {
+                console.log(error),
+                this.messageService.changeMessage('Error: ' + error.message)
+            }
+        )
     }
     
     convertUrl(conversion) {
