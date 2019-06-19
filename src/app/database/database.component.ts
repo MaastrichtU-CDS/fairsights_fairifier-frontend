@@ -42,7 +42,7 @@ export class DatabaseComponent implements OnInit {
 
         }) .catch ((error) => {
             console.log(error),
-            this.messageService.changeMessage(error.message)
+            this.messageService.changeMessage(error.message);
         });
     }
 

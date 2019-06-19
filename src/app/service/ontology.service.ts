@@ -16,75 +16,74 @@ export class OntologyService {
     ) { }
 
     getOntologies() {
-        const extraUrl = '/ontologies'
-        const url = environment.apiUrl + extraUrl
+        const extraUrl = '/ontologies';
+        const url = environment.apiUrl + extraUrl;
 
         this.http.get(url)
         .subscribe(
             data => {
-                this.putOntologiesInArray(data)
+                this.putOntologiesInArray(data);
             },
             error => {
                 console.log(error),
-                this.messageService.changeMessage('Error: ' + error.message)
+                this.messageService.changeMessage('Error: ' + error.message);
             }
-        )
+        );
     }
 
     putOntologiesInArray(currentOntologies) {
-        this.ontologyArray = currentOntologies
-        console.log(this.ontologyArray)
+        this.ontologyArray = currentOntologies;
+        console.log(this.ontologyArray);
     }
 
     uploadOntologyFile(ontologyFile, fileFormat, baseUri ) {
-        const extraUrl = '/ontology/import/file?baseUri='
-        const baseUriUrl = this.convertUrl(baseUri)
+        const extraUrl = '/ontology/import/file?baseUri=';
+        const baseUriUrl = this.convertUrl(baseUri);
         const formData = new FormData();
-        formData.append('file', ontologyFile)
-        var formatUrl
+        formData.append('file', ontologyFile);
+        let formatUrl;
         if (fileFormat !== 'No Format Selected' && fileFormat !== 'No Format') {
-            formatUrl = '&format=' + fileFormat
+            formatUrl = '&format=' + fileFormat;
         } else {
-            formatUrl = ''
+            formatUrl = '';
         }
-        const url = environment.apiUrl + extraUrl + baseUriUrl + formatUrl
+        const url = environment.apiUrl + extraUrl + baseUriUrl + formatUrl;
         this.http.post(url, formData)
         .subscribe(
             data => {
-                console.log(data)
-                this.messageService.changeMessage('Uploading Ontologyfile successful')
+                console.log(data);
+                this.messageService.changeMessage('Uploading Ontologyfile successful');
             },
             error => {
                 console.log(error),
-                this.messageService.changeMessage('Error: ' + error.message)
+                this.messageService.changeMessage('Error: ' + error.message);
             }
-        )
-
+        );
     }
 
     uploadOntologyUrl(ontologyUrl, fileFormat, baseUri ) {
-        const extraUrl = '/ontology/import/url?url='
-        const urlOntology = this.convertUrl(ontologyUrl)
-        const baseUriUrl = '&baseUri=' + this.convertUrl(baseUri)
-        const formatUrl = '&format=' + fileFormat
-        const url = environment.apiUrl + extraUrl + urlOntology + baseUriUrl + formatUrl
-        this.http.post(url, '') 
+        const extraUrl = '/ontology/import/url?url=';
+        const urlOntology = this.convertUrl(ontologyUrl);
+        const baseUriUrl = '&baseUri=' + this.convertUrl(baseUri);
+        const formatUrl = '&format=' + fileFormat;
+        const url = environment.apiUrl + extraUrl + urlOntology + baseUriUrl + formatUrl;
+        this.http.post(url, '')
         .subscribe(
             data => {
                 console.log(data),
-                this.messageService.changeMessage('Ontology url upload succesfull')
+                this.messageService.changeMessage('Ontology url upload successful');
             },
             error => {
                 console.log(error),
-                this.messageService.changeMessage('Error: ' + error.message)
+                this.messageService.changeMessage('Error: ' + error.message);
             }
-        )
+        );
     }
-    
+
     convertUrl(conversion) {
-        conversion = conversion.replace(/\$/g, "%24").replace(/\&/g, "%26").replace(/\+/g, "%2B")
-        .replace(/\,/g, "%2C").replace(/\//g, "%2F").replace(/\:/g, "%3A").replace(/\;/g, "%3B")
-        .replace(/\=/g, "%3D").replace(/\?/g, "%3F").replace(/\@/g, "%40");
-        return conversion
+        conversion = conversion.replace(/\$/g, '%24').replace(/\&/g, '%26').replace(/\+/g, '%2B')
+        .replace(/\,/g, '%2C').replace(/\//g, '%2F').replace(/\:/g, '%3A').replace(/\;/g, '%3B')
+        .replace(/\=/g, '%3D').replace(/\?/g, '%3F').replace(/\@/g, '%40');
+        return conversion;
     }
 }
