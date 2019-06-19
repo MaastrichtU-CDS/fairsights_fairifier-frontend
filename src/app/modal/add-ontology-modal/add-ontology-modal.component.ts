@@ -69,11 +69,7 @@ export class AddOntologyModalComponent implements OnInit {
                     this.messageService.changeMessage('Please insert a base Uri');
                 }
             } else {
-                if (this.myForm.value.baseUri !== '' && this.myForm.value.baseUri !== undefined) {
-                    this.messageService.changeMessage('Please select a format when using ontology');
-                } else {
-                this.messageService.changeMessage('Please insert a file/url');
-                }
+                    this.messageService.changeMessage('Please select a format and a baseUri when using ontology');
             }
         }
     }
