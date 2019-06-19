@@ -37,9 +37,6 @@ export class OntologyService {
     }
 
     uploadOntologyFile(ontologyFile, fileFormat, baseUri ) {
-        if (fileFormat === 'OWL') {
-            fileFormat = 'RDFXML'
-        }
         const extraUrl = '/ontology/import/file?baseUri='
         const baseUriUrl = this.convertUrl(baseUri)
         const formData = new FormData();
@@ -66,9 +63,6 @@ export class OntologyService {
     }
 
     uploadOntologyUrl(ontologyUrl, fileFormat, baseUri ) {
-        if (fileFormat === 'OWL') {
-            fileFormat = 'RDFXML'
-        }
         const extraUrl = '/ontology/import/url?url='
         const urlOntology = this.convertUrl(ontologyUrl)
         const baseUriUrl = '&baseUri=' + this.convertUrl(baseUri)

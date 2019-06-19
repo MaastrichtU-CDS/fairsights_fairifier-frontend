@@ -2,7 +2,6 @@ import { OntologyFormat } from './format';
 
 export const ONTOLOGYFORMATS: OntologyFormat[] = [
     { fullName: 'No Format Selected', shortName: 'No Format', extension: '' },
-    { fullName: 'Web Ontology Language', shortName: 'OWL' , extension: '.owl'},
     { fullName: 'BinaryRDF', shortName: 'BINARY', extension: '.bdf'},
     { fullName: 'JSON-LD', shortName: 'JSONLD', extension: '.jsonld'},
     { fullName: 'N3', shortName: 'N3', extension: '.n3'},
@@ -12,7 +11,6 @@ export const ONTOLOGYFORMATS: OntologyFormat[] = [
     { fullName: 'RDF/JSON', shortName: 'RDFJSON', extension: '.rj'},
     { fullName: 'RDF/XML', shortName: 'RDFXML', extension: '.rdf'},
     { fullName: 'TriG', shortName: 'TRIG', extension: '.trig'},
-    { fullName: 'TriX', shortName: 'TRIX', extension: '.xml'},
     { fullName: 'Turtle', shortName: 'TURTLE', extension: '.ttl'}
 ];
 

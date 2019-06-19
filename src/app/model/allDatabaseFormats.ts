@@ -9,7 +9,6 @@ export const DATABASEFORMATS: DatabaseFormat[] = [
     { driver: 'SQLITE', preUrl: 'jdbc:sqlite:'},
     { driver: 'MYSQL', preUrl: 'djbc:mysql:'},
     { driver: 'MARIADB', preUrl: 'jdbc:mariadb:'},
-    { driver: 'GAE', preUrl: ''},
     { driver: 'ORACLE', preUrl: 'jdbc:oracle:thing:'},
     { driver: 'POSTGRESQL', preUrl: 'jdbc:postgresql:'},
     { driver: 'HANA', preUrl: 'jdbc:sap:'},
