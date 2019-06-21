@@ -7,7 +7,7 @@ export const MAPPINGFORMATS: MappingFormat[] = [
     { fullName: 'N3', shortName: 'N3', extension: '.n3'},
     { fullName: 'N-Quads', shortName: 'NQUADS', extension: '.nq'},
     { fullName: 'N-Triples', shortName: 'NTRIPLES', extension: '.nt'},
-    { fullName: 'RDFa', shortName: 'RDFA', extension: '.rdfa'},
+    { fullName: 'RDFa', shortName: 'RDFa', extension: '.rdfa'},
     { fullName: 'RDF/JSON', shortName: 'RDFJSON', extension: '.rj'},
     { fullName: 'RDF/XML', shortName: 'RDFXML', extension: '.rdf'},
     { fullName: 'TriG', shortName: 'TRIG', extension: '.trig'},
