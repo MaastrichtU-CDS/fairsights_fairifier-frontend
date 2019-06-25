@@ -6,6 +6,7 @@ import { OntologyComponent } from './ontology/ontology.component';
 import { ValidateComponent } from './validate/validate.component';
 import { EditComponent } from './edit/edit.component';
 import { ResultComponent } from './result/result.component';
+import { UserManualComponent } from './user-manual/user-manual.component';
 
 const routes: Routes = [
   {path: 'database', component: DatabaseComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'ontology', component: OntologyComponent},
   {path: 'validate', component: ValidateComponent},
   {path: 'edit', component: EditComponent},
-  {path: 'result', component: ResultComponent}
+  {path: 'result', component: ResultComponent},
+  {path: 'user-manual', component: UserManualComponent}
 ];
 
 @NgModule({
