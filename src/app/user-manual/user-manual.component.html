@@ -1,17 +1,94 @@
 <div class="container-fluid" style="margin-top: 70px;">
     <div class="row justify-content-around h-100">
         <div class="col-6">
-            <h1>Add Database</h1>
-            <br>
+            <h3>1. Add Database</h3>
             <p>
-                1: Create a map called 'TestCSV'
+                1.1: Create a map called 'TestCSV'
                 <br>
-                2: Put Clinical1 in the map 'TestCSV' ()
+                1.2: Put Clinical1 in the map 'TestCSV'
+                <br>
+                 (Clinical1.csv <a href="https://github.com/maastroclinic/DataFAIRifier/blob/master/notebooks">Clinical1.csv Location</a>)
+                 <br>
+                 1.3: Go to <a routerLink="/database">Database</a>
+                 <br>
+                 1.4: Press 'Add Database'
+                 <br>
+                1.5: Put 'TestCSV' as the databasename
+                <br>
+                1.6: Put the url of the created map in url (../TestCSV)
+                <br>
+                1.7: Select 'CSV' as Format
+                <br>
+                1.8: Click on 'Save Database'
+                <br>
+                *If you see TestCSV in the table on the database page it worked
+            </p>
+
+            <h3>2. Add Mapping</h3>
+            <p>
+                2.1: Go to <a routerLink="/mapping">Mapping</a>
+                <br>
+                2.2: Download mapping.ttl from  <a href="https://github.com/maastroclinic/DataFAIRifier/blob/master/notebooks">mapping.ttl Location</a>
+                <br>
+                2.3: Put mapping.ttl in the choose file area
+                <br>
+                2.4: Click on 'Upload Mapping'
+                <br>
+                2.5: Select a format on the left side of the screen
+                <br>
+                2.6: Press the button 'Download current mapping'
+                <br>
+                *If everything went correct you should be downloading the file you just uploaded
+            </p>
+
+            <h3>3. Upload Ontology</h3>
+            <p>
+                3.1:  Go to <a routerLink="/ontology">Ontology</a>
+                <br>
+                3.2: Click on 'Add Ontology'
+                <br>
+                3.3: Click on the checkbox next to url
+                <br>
+                3.4: Put the following in the textfield
+                <br>
+                http://data.bioontology.org/ontologies/ROO/submissions/8/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb
+                <br>
+                3.5: Fill in http://www.cancerdata.org/roo/ in the base Uri box
+                <br>
+                3.6: Select ‘RDFXML’ as format
+                <br>
+                3.7: Press the ‘Save Ontology’ Button
+                <br>
+                *If you did it correct you will see the ontology file in the table underneath the first button
             </p>
         </div>
             
         <div class="col-6">
-            def
+            <h3>4. Validate Database</h3>
+            <p>
+                4.1: Go to <a routerLink="/validate">Validate Database</a>
+                <br>
+                4.2: Change the SQL to 'SELECT * FROM Clinical1'
+                <br>
+                4.3: Put 'TestCSV' in the database part
+                <br>
+                4.4: Put a max results
+                <br>
+                4.5: Click on test Sql Query
+                <br>
+                4.6: Click on save Sql Query
+                <br>
+                *If everything went correct you should be able to go <a routerLink="/edit">Validate Mapping</a>
+                <br>
+                and use this page
+            </p>
+
+            <h3>5. Validate Mapping</h3>
+            <p>
+                
+            </p>
+            
         </div>
+
     </div>
 </div>
