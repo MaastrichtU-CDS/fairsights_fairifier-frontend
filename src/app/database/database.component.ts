@@ -14,6 +14,7 @@ export class DatabaseComponent implements OnInit {
 
     dataSource: string;
     driverUrl: string;
+    driverUsed: string;
 
     constructor(
         public messageService: MessageService,
@@ -21,20 +22,19 @@ export class DatabaseComponent implements OnInit {
         public databaseService: DatabaseService
     ) { }
 
-    private getByName(nameDriver) {
-        for ( let i = 0, iLen = DATABASEFORMATS.length; i < iLen; i++) {
-            if (DATABASEFORMATS[i].driver === nameDriver) {}
-            return DATABASEFORMATS[i].preUrl;
-        }
-    }
-
     openDatabaseModal() {
         const modalRef = this.modalService.open(AddDatabaseModalComponent);
         modalRef.result.then((result) => {
             result.url = result.url.replace(/\\/g, '\\\\');
-            this.driverUrl = this.getByName(result.format);
+            for ( let i = 0, iLen = DATABASEFORMATS.length; i < iLen; i++) {
+                if (DATABASEFORMATS[i].driver === result.format) {
+                    this.driverUrl = DATABASEFORMATS[i].preUrl;
+                    this.driverUsed = DATABASEFORMATS[i].fullDriver;
+                }
+            }
+
             result.url =  this.driverUrl + result.url;
-            this.dataSource = '{ \"driver\": \"' + result.format + '\", \"name\": \"' +
+            this.dataSource = '{ \"driverClassName\": \"' + this.driverUsed + '\", \"name\": \"' +
             result.databasename + '\", \"password\": \"' + result.password + '\", \"url\": \"' +
             result.url + '\", \"username\": \"' + result.username + '\" }';
             this.databaseService.addDatabase(this.dataSource, result.databasename);

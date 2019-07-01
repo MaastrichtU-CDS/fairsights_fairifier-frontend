@@ -73,6 +73,8 @@ export class ValidateService {
         const extraUrl = '/datasource/query?dataSourceName=' + database + '&sqlQuery=' + this.queryChanged + '&resultsLimit=' + amount;
         const totalUrl = environment.apiUrl + extraUrl;
 
+        this.convertUrl(totalUrl)
+
         return this.http.get(totalUrl)
             .subscribe(
             response => (
@@ -87,6 +89,13 @@ export class ValidateService {
                 this.messageService.validateTestSuccesful = false
             )
         );
+    }
+
+    convertUrl(conversion) {
+        conversion = conversion.replace(/\$/g, '%24').replace(/\&/g, '%26').replace(/\+/g, '%2B')
+        .replace(/\,/g, '%2C').replace(/\//g, '%2F').replace(/\:/g, '%3A').replace(/\;/g, '%3B')
+        .replace(/\=/g, '%3D').replace(/\?/g, '%3F').replace(/\@/g, '%40');
+        return conversion;
     }
 
     saveSqlQuery() {

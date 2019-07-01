@@ -1,6 +1,7 @@
 export class DatabaseFormat {
     driver: string;
     preUrl: string;
+    fullDriver: string;
 }
 
 export class OntologyFormat {
