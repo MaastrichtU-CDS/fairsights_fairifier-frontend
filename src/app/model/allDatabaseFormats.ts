@@ -4,10 +4,10 @@ import { DatabaseFormat } from './format';
 export const DATABASEFORMATS: DatabaseFormat[] = [
     { driver: 'CSV', preUrl: 'jdbc:relique:csv:', fullDriver: 'org.relique.jdbc.csv.CsvDriver'},
     { driver: 'DERBY', preUrl: 'jdbc:derby:', fullDriver: 'org.apache.derby.jdbc.EmbeddedDriver'},
-    { driver: 'H2', preUrl: 'jdbc:h2:', fullDriver: 'org.h2.jdbcx.JdbcConnectionPool'},
+    { driver: 'H2', preUrl: 'jdbc:h2:file:', fullDriver: 'org.h2.Driver'},
     { driver: 'HSQLDB', preUrl: 'jdbc:hsqldb:', fullDriver: 'org.hsqldb.jdbcDriver '},
     { driver: 'SQLITE', preUrl: 'jdbc:sqlite:', fullDriver: 'org.sqlite.JDBC'},
-    { driver: 'MYSQL', preUrl: 'djbc:mysql:', fullDriver: 'com.mysql.jdbc.Driver'},
+    { driver: 'MYSQL', preUrl: 'jdbc:mysql:', fullDriver: 'com.mysql.jdbc.Driver'},
     { driver: 'MARIADB', preUrl: 'jdbc:mariadb:', fullDriver: 'org.mariadb.jdbc.Driver'},
     { driver: 'ORACLE', preUrl: 'jdbc:oracle:thing:', fullDriver: 'oracle.jdbc.driver'},
     { driver: 'POSTGRESQL', preUrl: 'jdbc:postgresql:', fullDriver: 'com.sap.db.jdbc.Driver'},
