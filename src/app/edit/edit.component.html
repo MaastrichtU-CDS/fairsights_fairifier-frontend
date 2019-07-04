@@ -3,19 +3,45 @@
         <label class>On this page you can test your mapping with tripples</label>
     </div>
     <div class="row justify-content-around h-100">
-        <div  class="col-md-3">
+        <div  class="col-md-4">
             <div class="row">
                 <div class="input-group">
                     <div class="input-group">
                         <span class="input-gdiaroup-text w-100">Definitions</span>
                     </div>
                     <textarea [disabled]='!messageService.validateSaveSuccesful' class="form-control" rows="25" aria-label="With textarea" (change)="changeMappingDefinitions($event)">{{editService.mappingDefinitionChanged}}</textarea>
-                </div>
+                </div>  
             </div>
         </div>
         <br>
 
-        <div  class="col-md-6">
+        <div  class="col-md-5">
+                <div  class="row">
+                        <div class="container">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-light">
+                                        <tr>
+                                                        <th>#</th>
+                                                        <th>Subject</th>
+                                                        <th>Predicate</th>
+                                                        <th>Object</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                                <tr *ngFor="let x of editService.tripleMappingArray; let i = index">
+                                                    <td>{{i + 1}}</td>
+                                                    <td>{{x.subject}}</td>
+                                                    <td>{{x.predicate}}</td>
+                                                    <td>{{x.object}}</td>
+                                                </tr>
+                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> 
+                </div>
 
         </div>
       

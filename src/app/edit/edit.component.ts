@@ -19,8 +19,10 @@ export class EditComponent implements OnInit {
     ngOnInit() {
         this.messageService.changeMessage('');
         this.editService.testSuccesful = false;
+        this.messageService.validateSaveSuccesful = true;
+        this.editService.getMappingTriples();
     }
-
+    
     changeMappingDefinitions(newMappingDefinition) {
         this.editService.testSuccesful = false;
         this.messageService.changeMessage('Mapping Definitions Changed'),
