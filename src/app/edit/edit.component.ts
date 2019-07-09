@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../service/message.service';
 import { EditService } from '../service/edit.service';
+import { GetDatabaseService } from '../service/get-database.service';
 
 @Component({
     selector: 'app-edit',
@@ -13,10 +14,13 @@ export class EditComponent implements OnInit {
 
     constructor(
         public messageService: MessageService,
-        public editService: EditService
+        public editService: EditService,
+        public getDatabaseService: GetDatabaseService
     ) { }
 
     ngOnInit() {
+        this.editService.mappingDefinitionChanged = "abc \ndef"
+        this.getDatabaseService.getDatabase
         this.messageService.changeMessage('');
         this.editService.testSuccesful = false;
         this.messageService.validateSaveSuccesful = true;
@@ -38,6 +42,9 @@ export class EditComponent implements OnInit {
     }
 
     testMappingDefinitions() {
+        if (this.databaseName === undefined || this.databaseName === "") {
+            this.databaseName = this.getDatabaseService.getDatabaseArray[0].name
+        }
         if ( this.databaseName !== undefined && this.databaseName !== '' && this.resultsAmount !== undefined && this.resultsAmount !== '') {
             if ( this.editService.mappingDefinitionChanged !== undefined && this.editService.mappingDefinitionChanged !== '') {
                 this.messageService.changeMessage('Mapping Definitions Test'),
@@ -60,7 +67,7 @@ export class EditComponent implements OnInit {
 
     changeUsedDatabase(newDatabase)  {
         this.editService.testSuccesful = false;
-        this.databaseName = newDatabase.target.value,
+        this.databaseName = newDatabase,
         this.messageService.changeMessage('Database changed to: ' + this.databaseName);
         console.log(this.databaseName);
     }

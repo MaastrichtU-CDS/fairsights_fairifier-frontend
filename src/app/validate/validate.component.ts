@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../service/message.service';
 import { ValidateService } from '../service/validate.service';
+import { GetDatabaseService } from '../service/get-database.service';
 
 @Component({
   selector: 'app-validate',
@@ -11,13 +12,15 @@ export class ValidateComponent implements OnInit {
 
     constructor(
         public validateService: ValidateService,
-        public messageService: MessageService
+        public messageService: MessageService,
+        public getDatabaseService: GetDatabaseService
     ) { }
 
     resultsAmount;
     database = '';
 
     ngOnInit() {
+        this.getDatabaseService.getDatabase();
         this.messageService.changeMessage('');
         this.validateService.getSqlQuery();
         this.messageService.validateTestSuccesful = false;
@@ -31,7 +34,7 @@ export class ValidateComponent implements OnInit {
     }
 
     databaseChanged(newDatabase) {
-        this.database = newDatabase.target.value;
+        this.database = newDatabase
         this.messageService.changeMessage('New database');
     }
 
@@ -42,6 +45,9 @@ export class ValidateComponent implements OnInit {
     }
 
     testData() {
+        if (this.database === undefined || this.database === "") {
+            this.database = this.getDatabaseService.getDatabaseArray[0].name
+        }
         if (this.resultsAmount !== undefined && this.resultsAmount !== '' && this.database !== '') {
             if (this.validateService.currentQuery !== undefined && this.validateService.currentQuery !== '') {
                 this.validateService.testSqlQuery(this.resultsAmount, this.database, this.validateService.currentQuery);

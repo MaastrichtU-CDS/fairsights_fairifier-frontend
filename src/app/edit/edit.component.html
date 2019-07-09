@@ -50,12 +50,18 @@
             <br>
             <button [disabled]='!editService.testSuccesful' (click)="saveMappingDefinitions()" class="btn btn-secondary btn-block">Save Definitions</button>
             <br>
+
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <label for="inputTargetDatabase" class="input-group-text "> Database </label>
+                    <label class="input-group-text" for="inputTargetDatabase">Database</label>
                 </div>
-                <input [disabled]='!messageService.validateSaveSuccesful' type="text" class="form-control" id="inputTargetDatabase" (change)="changeUsedDatabase($event)">
+                <select [disabled]='!messageService.validateSaveSuccesful' class="custom-select" id="inputTargetDatabase"  (change)="changeUsedDatabase($event.target.value)">
+                    <option *ngFor = "let string of this.getDatabaseService.getDatabaseArray">
+                        {{string.name}}
+                    </option>
+                </select>
             </div>
+            
             <br>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -67,3 +73,4 @@
         </div>
     </div>
 </div>
+

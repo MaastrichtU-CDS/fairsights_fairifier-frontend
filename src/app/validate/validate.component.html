@@ -40,9 +40,13 @@
                 <br>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <label for="inputTargetDatabase" class="input-group-text "> Database </label>
+                        <label class="input-group-text" for="inputTargetDatabase">Database</label>
                     </div>
-                    <input type="text" class="form-control" id="inputTargetDatabase" (change)="databaseChanged($event)">
+                    <select class="custom-select" id="inputTargetDatabase"  (change)="databaseChanged($event.target.value)">
+                        <option *ngFor = "let string of this.getDatabaseService.getDatabaseArray">
+                            {{string.name}}
+                        </option>
+                    </select>
                 </div>
             <br>
             
