@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from '../service/message.service';
 import { environment } from '../../environments/environment';
 
@@ -14,13 +14,29 @@ export class EditService {
     ) { }
 
     public testSuccesful;
-    public tripleMappingArray
+    public tripleMappingArray;
+    public triplesTestResult;
 
     mappingDefinitionChanged = '';
 
-    testMappingDefinitions() {
-        console.log('Mapping definition testing is not yet implemented');
+    private options = { headers: new HttpHeaders().set('Content-Type', 'application/json')};
+
+    testMappingDefinitions(dataName, totalAmount) {
         this.testSuccesful = true;
+
+        const extraUrl = '/mapping/test'
+        const url = environment.apiUrl + extraUrl
+        const datasource = "{\"dataSourceName\": \"" + dataName + "\", \"limit\": " + totalAmount + "}"
+        return this.http.post(url, datasource, this.options) 
+        .subscribe(
+            data => {
+                this.putTestResultsInArray(data)
+            },
+            error => {
+                console.log(error)
+                this.messageService.changeMessage("Error: " + error.message)
+            }
+        )
     }
 
     saveMappingDefinitions() {
@@ -46,7 +62,20 @@ export class EditService {
  
     putTriplesInArray(triplesMapping) {
         this.tripleMappingArray = triplesMapping
-        console.log(this.tripleMappingArray)
+        let i = 0
+        let x = ''
+        while (i<this.tripleMappingArray.length) {
+            x = x + "Subject: " +  this.tripleMappingArray[i].subject + "\n"
+            x = x + "Predicate: " + this.tripleMappingArray[i].predicate + "\n"
+            x = x + "Object: " + this.tripleMappingArray[i].object + "\n" + "\n"
+            i++
+        }
+        this.mappingDefinitionChanged = x
+    }
+
+    putTestResultsInArray(triplesTestResults) {
+        this.triplesTestResult = triplesTestResults
+        console.log(this.triplesTestResult)
     }
 }
 

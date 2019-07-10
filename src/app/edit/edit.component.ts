@@ -19,7 +19,6 @@ export class EditComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.editService.mappingDefinitionChanged = "abc \ndef"
         this.getDatabaseService.getDatabase
         this.messageService.changeMessage('');
         this.editService.testSuccesful = false;
@@ -48,7 +47,7 @@ export class EditComponent implements OnInit {
         if ( this.databaseName !== undefined && this.databaseName !== '' && this.resultsAmount !== undefined && this.resultsAmount !== '') {
             if ( this.editService.mappingDefinitionChanged !== undefined && this.editService.mappingDefinitionChanged !== '') {
                 this.messageService.changeMessage('Mapping Definitions Test'),
-                this.editService.testMappingDefinitions();
+                this.editService.testMappingDefinitions(this.databaseName, this.resultsAmount);
             } else {
                 this.messageService.changeMessage('Please insert mapping definitions');
             }

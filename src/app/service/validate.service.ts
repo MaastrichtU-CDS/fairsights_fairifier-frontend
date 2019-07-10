@@ -68,7 +68,7 @@ export class ValidateService {
         }
     }
 
-    public testSqlQuery(amount, database, query) {
+    testSqlQuery(amount, database, query) {
         this.queryChanged = query.replace(/\s/g, '%20');
         const extraUrl = '/datasource/query?dataSourceName=' + database + '&sqlQuery=' + this.queryChanged + '&resultsLimit=' + amount;
         const totalUrl = environment.apiUrl + extraUrl;
