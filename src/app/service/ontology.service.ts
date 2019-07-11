@@ -51,6 +51,7 @@ export class OntologyService {
         this.http.post(url, formData)
         .subscribe(
             data => {
+                this.getOntologies(),
                 console.log(data);
                 this.messageService.changeMessage('Uploading Ontologyfile successful');
             },
@@ -70,6 +71,7 @@ export class OntologyService {
         this.http.post(url, '')
         .subscribe(
             data => {
+                this.getOntologies(),
                 console.log(data),
                 this.messageService.changeMessage('Ontology url upload successful');
             },

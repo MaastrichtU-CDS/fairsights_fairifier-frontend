@@ -22,7 +22,6 @@ export class EditComponent implements OnInit {
         this.getDatabaseService.getDatabase
         this.messageService.changeMessage('');
         this.editService.testSuccesful = false;
-        this.messageService.validateSaveSuccesful = true;
         this.editService.getMappingTriples();
     }
     
