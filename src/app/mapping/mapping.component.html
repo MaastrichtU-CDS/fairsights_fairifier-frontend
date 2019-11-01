@@ -1,0 +1,48 @@
+<div class="container-fluid" style="margin-top: 70px;">
+        <div class="row justify-content-around">
+            <div class="col-xs-6">
+                <button type="button" class="btn btn-secondary" (click)="downloadMapping()">Download Current Mapping</button>
+                <br>
+                <br>
+                <div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="inputGroupSelect01">Options</label>
+					</div>
+					<select (change)="formatChanged($event.target.value)">
+						<option *ngFor="let Format of allformats" 
+						[selected]="Format.fullName == selectedFormat[0].fullName"
+						[value]="Format.shortName">
+							{{Format.fullName}} ({{Format.extension}})  
+						</option>
+					</select>
+				</div>
+ 
+                <label class="container"> 
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<input type="checkbox" data-md-icheck (change)="toggleChoosenFormat($event)"/>
+								Use this format for uploading?
+							</div>
+						</div>
+					</div>
+                </label> 
+				
+            </div>
+			
+        <div class="col-xs-6" >
+            <button type="button" class="btn btn-secondary" (click)="mappingUpload()">Upload Mapping</button>
+            <br>
+            <br>
+
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" multiple formControlName="importFile" id="importFile" (change)="mappingFileUpload($event)">
+                <label class="custom-file-label" #labelImport for="importFile"><i class="fas fa-search"></i> Choose file</label>
+            </div>
+			
+			<br>
+			
+			{{messageService.message}}
+        </div>   
+    </div>
+</div>
