@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../service/message.service';
-import { ValidateService } from '../service/validate.service';
-import { GetDatabaseService } from '../service/get-database.service';
+import { MessageService } from '../../service/message.service';
+import { ValidateService } from '../../service/validate-query.service';
+import { GetDatabaseService } from '../../service/get-database.service';
 
 @Component({
-  selector: 'app-validate',
-  templateUrl: './validate.component.html',
-  styleUrls: ['./validate.component.css']
+  selector: 'app-validate-query',
+  templateUrl: './validate-query.component.html',
+  styleUrls: ['./validate-query.component.css']
 })
-export class ValidateComponent implements OnInit {
+export class ValidateQueryComponent implements OnInit {
 
     constructor(
         public validateService: ValidateService,

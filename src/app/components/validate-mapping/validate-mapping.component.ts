@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../service/message.service';
-import { EditService } from '../service/edit.service';
-import { GetDatabaseService } from '../service/get-database.service';
+import { MessageService } from '../../service/message.service';
+import { EditService } from '../../service/validate-mapping.service';
+import { GetDatabaseService } from '../../service/get-database.service';
 
 @Component({
-    selector: 'app-edit',
-    templateUrl: './edit.component.html',
-    styleUrls: ['./edit.component.css']
+    selector: 'app-validate-mapping',
+    templateUrl: './validate-mapping.component.html',
+    styleUrls: ['./validate-mapping.component.css']
 })
-export class EditComponent implements OnInit {
+export class ValidateMappingComponent implements OnInit {
     databaseName;
     resultsAmount;
 

@@ -6,17 +6,17 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { MappingComponent } from './mapping/mapping.component';
-import { OntologyComponent } from './ontology/ontology.component';
-import { DatabaseComponent } from './database/database.component';
-import { ValidateComponent } from './validate/validate.component';
-import { EditComponent } from './edit/edit.component';
-import { ResultComponent } from './result/result.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MappingComponent } from './components/mapping/mapping.component';
+import { OntologyComponent } from './components/ontology/ontology.component';
+import { DatabaseComponent } from './components/database/database.component';
+import { ValidateQueryComponent } from './components/validate-query/validate-query.component';
+import { ValidateMappingComponent } from './components/validate-mapping/validate-mapping.component';
+import { ResultComponent } from './components/result/result.component';
+import { UserManualComponent } from './components/user-manual/user-manual.component';
 
 import { AddDatabaseModalComponent } from './modal/add-database-modal/add-database-modal.component';
 import { AddOntologyModalComponent } from './modal/add-ontology-modal/add-ontology-modal.component';
-import { UserManualComponent } from './user-manual/user-manual.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +25,12 @@ import { UserManualComponent } from './user-manual/user-manual.component';
     MappingComponent,
     OntologyComponent,
     DatabaseComponent,
-    ValidateComponent,
-    EditComponent,
+    ValidateQueryComponent,
+    ValidateMappingComponent,
     ResultComponent,
+    UserManualComponent,
     AddDatabaseModalComponent,
-    AddOntologyModalComponent,
-    UserManualComponent
+    AddOntologyModalComponent
   ],
   imports: [
     BrowserModule,

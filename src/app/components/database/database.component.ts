@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../service/message.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AddDatabaseModalComponent } from '../modal/add-database-modal/add-database-modal.component';
-import { DatabaseService } from '../service/database.service';
-import { DATABASEFORMATS } from '../model/allDatabaseFormats';
+import { AddDatabaseModalComponent } from '../../modal/add-database-modal/add-database-modal.component';
+import { MessageService } from '../../service/message.service';
+import { DatabaseService } from '../../service/database.service';
+import { DATABASEFORMATS } from '../../model/allDatabaseFormats';
 
 @Component({
     selector: 'app-database',
