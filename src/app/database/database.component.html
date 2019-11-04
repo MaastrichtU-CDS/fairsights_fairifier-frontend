@@ -1,0 +1,36 @@
+<div class="container-fluid" style="margin-top: 70px;">
+    <div class="row justify-content-around h-100">
+        <div class="row w-100">
+            <label class="offset-md-3">On this page you can see a list of the loaded in databases. You can also add a new one by clicking the Add Database button</label>
+            <button type="button" class="offset-md-4 btn btn-secondary" (click)="openDatabaseModal()">Add Database</button>
+        </div>
+        <br>
+        {{messageService.testString}}
+    </div>
+</div>
+<br>
+
+<div  class="row">
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Url</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                                <tr *ngFor="let x of databaseService.databaseArray; let i = index">
+                                    <td>{{i + 1}}</td>
+                                    <td>{{x.name}}</td>
+                                    <td>{{x.url}}</td>
+                                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div> 
+</div>

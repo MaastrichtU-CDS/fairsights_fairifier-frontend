@@ -1,0 +1,12 @@
+.nav-item{
+    padding:2px;
+    margin-left: 7px;
+}
+
+.navbar-dark :hover {
+    color: #aca5e7c0;
+}
+
+.navbar-dark .active {
+    color: white;
+}
