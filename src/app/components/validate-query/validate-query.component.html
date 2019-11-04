@@ -7,7 +7,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">SQL</span>
                     </div>
-                    <textarea class="form-control" rows="5" aria-label="With textarea" (change)="sqlChanged($event)">{{validateService.currentQuery}}</textarea>
+                    <textarea class="form-control" rows="5" aria-label="With textarea" (change)="sqlChanged($event)">{{validateQueryService.currentQuery}}</textarea>
                 </div>
             </div>
 
@@ -19,12 +19,12 @@
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th *ngFor="let x of validateService.dataKeyProps">{{x}}</th>
+                                    <th *ngFor="let x of validateQueryService.dataKeyProps">{{x}}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let y of validateService.dataArray; let c = index">
-                                    <td *ngFor="let z of y; let i = index">{{validateService.dataArray[c][i]}}</td>
+                                <tr *ngFor="let y of validateQueryService.dataArray; let c = index">
+                                    <td *ngFor="let z of y; let i = index">{{validateQueryService.dataArray[c][i]}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -43,8 +43,8 @@
                         <label class="input-group-text" for="inputTargetDatabase">Database</label>
                     </div>
                     <select class="custom-select" id="inputTargetDatabase"  (change)="databaseChanged($event.target.value)">
-                        <option *ngFor = "let string of this.getDatabaseService.getDatabaseArray">
-                            {{string.name}}
+                        <option *ngFor = "let database of this.databaseService.databaseArray">
+                            {{database.name}}
                         </option>
                     </select>
                 </div>

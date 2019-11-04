@@ -56,7 +56,7 @@
                     <label class="input-group-text" for="inputTargetDatabase">Database</label>
                 </div>
                 <select [disabled]='!messageService.validateSaveSuccesful' class="custom-select" id="inputTargetDatabase"  (change)="changeUsedDatabase($event.target.value)">
-                    <option *ngFor = "let string of this.getDatabaseService.getDatabaseArray">
+                    <option *ngFor = "let string of this.databaseService.databaseArray">
                         {{string.name}}
                     </option>
                 </select>

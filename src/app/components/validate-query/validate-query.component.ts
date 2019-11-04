@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../../service/message.service';
-import { ValidateService } from '../../service/validate-query.service';
-import { GetDatabaseService } from '../../service/get-database.service';
+import { ValidateQueryService } from '../../service/validate-query.service';
+import { DatabaseService } from '../../service/database.service';
 
 @Component({
   selector: 'app-validate-query',
@@ -11,22 +11,22 @@ import { GetDatabaseService } from '../../service/get-database.service';
 export class ValidateQueryComponent implements OnInit {
 
     constructor(
-        public validateService: ValidateService,
+        public validateQueryService: ValidateQueryService,
         public messageService: MessageService,
-        public getDatabaseService: GetDatabaseService
+        public databaseService: DatabaseService
     ) { }
 
     resultsAmount;
     database = '';
 
     ngOnInit() {
-        this.getDatabaseService.getDatabase();
+        this.databaseService.getDatabases();
         this.messageService.changeMessage('');
-        this.validateService.getSqlQuery();
+        this.validateQueryService.getSqlQuery();
         this.messageService.validateTestSuccesful = false;
-        this.validateService.valueChanged = false;
-        this.validateService.dataArray = [];
-        this.validateService.dataKeyProps = [];
+        this.validateQueryService.valueChanged = false;
+        this.validateQueryService.dataArray = [];
+        this.validateQueryService.dataKeyProps = [];
     }
 
     amountChanged(newAmount) {
@@ -39,18 +39,18 @@ export class ValidateQueryComponent implements OnInit {
     }
 
     sqlChanged(newQuery) {
-        this.validateService.currentQuery = newQuery.target.value;
+        this.validateQueryService.currentQuery = newQuery.target.value;
         this.messageService.changeMessage('Query changed');
-        this.validateService.valueChanged = true;
+        this.validateQueryService.valueChanged = true;
     }
 
     testData() {
         if (this.database === undefined || this.database === "") {
-            this.database = this.getDatabaseService.getDatabaseArray[0].name
+            this.database = this.databaseService.databaseArray[0].name
         }
         if (this.resultsAmount !== undefined && this.resultsAmount !== '' && this.database !== '') {
-            if (this.validateService.currentQuery !== undefined && this.validateService.currentQuery !== '') {
-                this.validateService.testSqlQuery(this.resultsAmount, this.database, this.validateService.currentQuery);
+            if (this.validateQueryService.currentQuery !== undefined && this.validateQueryService.currentQuery !== '') {
+                this.validateQueryService.testSqlQuery(this.resultsAmount, this.database, this.validateQueryService.currentQuery);
             } else {
                 this.messageService.changeMessage('Please insert a Sql Query');
             }
@@ -60,6 +60,6 @@ export class ValidateQueryComponent implements OnInit {
     }
 
     saveData() {
-        this.validateService.saveSqlQuery();
+        this.validateQueryService.saveSqlQuery();
     }
 }
