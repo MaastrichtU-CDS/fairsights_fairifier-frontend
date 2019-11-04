@@ -1,0 +1,56 @@
+<div class="container-fluid" style="margin-top: 70px;">
+    <div class="row justify-content-around h-100">
+        <div class="row">
+            <label class="offset-md-2">On this page you can download and upload a mapping.</label>
+            <br>
+        
+
+            <div class="col-md-6">
+            <button type="button" class="btn btn-secondary w-100" (click)="downloadMapping()">Download Current Mapping</button>
+            <br>
+            <br>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Format</label>
+                </div>
+                <select class="custom-select col-sm-11" id="inputGroupSelectMapping01"  (change)="formatChangedDownload($event.target.value)">
+                    <option *ngFor = "let mappingFormatDownload of allMappingFormats"
+                        [selected]="mappingFormatDownload.fullName == selectedFormatDownload[0].fullName"
+                        [value]="mappingFormatDownload.shortName">
+                        {{mappingFormatDownload.fullName}} ({{mappingFormatDownload.extension}})
+                    </option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="col-md-6" >
+            <button type="button" class="btn btn-secondary w-100" (click)="mappingUpload()">Upload Mapping</button>
+            <br>
+            <br>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Format</label>
+                </div>
+                <select class="custom-select col-sm-11" id="inputGroupSelectMapping01"  (change)="formatChangedUpload($event.target.value)">
+                    <option *ngFor = "let mappingFormatUpload of allMappingFormats"
+                        [selected]="mappingFormatUpload.fullName == selectedFormatUpload[0].fullName"
+                        [value]="mappingFormatUpload.shortName">
+                        {{mappingFormatUpload.fullName}} ({{mappingFormatUpload.extension}})
+                    </option>
+                </select>
+            </div>
+
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" multiple id="importFile" (change)="mappingFileUpload($event)">
+                <label class="custom-file-label" #labelImport><i class="fas fa-search"></i> Choose file</label>
+            </div>
+            </div>
+
+        </div>
+        <br>
+        <label class="container"> 
+            {{messageService.testString}}
+        </label>
+    </div>
+</div>

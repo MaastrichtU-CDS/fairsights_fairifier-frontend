@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Ontology</h4>
+    <button type="button" class="close" aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')">
+        X
+    </button>
+</div>
+<form [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <label class="offset-md-1">On this page you can add a Ontology by Url and by File</label>
+    <div class="modal-body">
+        <div class="container">
+
+            <div class="form-group">
+                    <input  type="radio" value="Url" name="1" data-md-icheck (change)="toggleInput('Url')"  />
+                <label for='url'>Url</label>
+                <input type="text"
+                    class="form-control"
+                    formControlName='url'/>
+            </div>
+
+            <div class="form-group">
+                    <input  type="radio" value="File" name="1" data-md-icheck (change)="toggleInput('File')"  />
+                <label> File</label>
+                    <div class="custom-file">
+                            <input type="file" class="custom-file-input" multiple id="importFile" (change)="fileChanged($event)">
+                            <label class="custom-file-label" #labelImport><i class="fas fa-search"></i> Choose file</label>
+                        </div>
+            </div>
+
+            <div class="form-group">
+            <label for='baseUri'>Base Uri</label>
+            <input type="text"
+                class="form-control"
+                formControlName='baseUri'/>
+        </div>
+
+            <div class="form-group">
+                <label for="format">Format</label>
+                <select class="form-control"
+                    formControlName="format">
+                    <option *ngFor="let string of allFormats">
+                        {{string.shortName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    {{messageService.testString}}
+
+    <div class="modal-footer">
+        <button class="btn btn-success"
+            [disabled]="!myForm.valid">
+            Save Ontology
+        </button>
+    </div>
+
+</form>
