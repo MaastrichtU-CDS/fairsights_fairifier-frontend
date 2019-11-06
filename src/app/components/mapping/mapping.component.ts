@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { MessageService } from '../service/message.service';
-import { MAPPINGFORMATS, pickedMappingFormatUpload, pickedMappingFormatDownload } from '../model/mappingFormats';
-import { MappingService } from '../service/mapping.service';
+import { MAPPINGFORMATS, pickedMappingFormatUpload, pickedMappingFormatDownload } from '../../model/mappingFormats';
+import { MessageService } from '../../service/message.service';
+import { MappingService } from '../../service/mapping.service';
 
 @Component({
     selector: 'app-mapping',

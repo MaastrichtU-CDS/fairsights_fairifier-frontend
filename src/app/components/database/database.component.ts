@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../service/message.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AddDatabaseModalComponent } from '../modal/add-database-modal/add-database-modal.component';
-import { DatabaseService } from '../service/database.service';
-import { DATABASEFORMATS } from '../model/allDatabaseFormats';
+import { AddDatabaseModalComponent } from '../../modal/add-database-modal/add-database-modal.component';
+import { MessageService } from '../../service/message.service';
+import { DatabaseService } from '../../service/database.service';
+import { DATABASEFORMATS } from '../../model/allDatabaseFormats';
 
 @Component({
     selector: 'app-database',
@@ -38,7 +38,7 @@ export class DatabaseComponent implements OnInit {
             result.databasename + '\", \"password\": \"' + result.password + '\", \"url\": \"' +
             result.url + '\", \"username\": \"' + result.username + '\" }';
             this.databaseService.addDatabase(this.dataSource, result.databasename);
-            this.databaseService.getDatabase();
+            this.databaseService.getDatabases();
 
         }) .catch ((error) => {
             console.log(error),
@@ -48,6 +48,6 @@ export class DatabaseComponent implements OnInit {
 
     ngOnInit() {
         this.messageService.changeMessage('');
-        this.databaseService.getDatabase();
+        this.databaseService.getDatabases();
     }
 }

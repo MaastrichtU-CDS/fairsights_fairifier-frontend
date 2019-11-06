@@ -1,9 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { MessageService } from '../service/message.service';
-import { OntologyService } from '../service/ontology.service';
-import { ONTOLOGYFORMATS, pickedOntologyFormat } from '../model/ontologyFormats';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AddOntologyModalComponent } from '../modal/add-ontology-modal/add-ontology-modal.component';
+import { MessageService } from '../../service/message.service';
+import { OntologyService } from '../../service/ontology.service';
+import { ONTOLOGYFORMATS, pickedOntologyFormat } from '../../model/ontologyFormats';
+import { AddOntologyModalComponent } from '../../modal/add-ontology-modal/add-ontology-modal.component';
 
 @Component({
     selector: 'app-ontology',

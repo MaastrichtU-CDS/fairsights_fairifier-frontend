@@ -1,0 +1,92 @@
+<div class="container-fluid" style="margin-top: 70px;">
+
+    <div>
+        On this page you can test and update the SQL query of the R2RML mapping
+    </div>
+    
+    <br>
+    <div>
+        <h4>Required columns</h4>
+        <ul>
+            <li *ngFor="let column of this.validateQueryService.requiredTableColumns">
+                {{ column }}
+            </li>
+        </ul>
+    </div>
+    
+    
+    <br>
+    <div>
+        <h4>SQL query editor</h4>
+        
+        <div class="row justify-content-around h-100">
+            <div class="col-md-9">
+                <div class="input-group">
+		            <div class="input-group-prepend">
+		                <span class="input-group-text">SQL</span>
+		            </div>
+		            <textarea id=xxx class="form-control" rows="5" aria-label="With textarea" (change)="sqlChanged($event)">{{validateQueryService.currentQuery}}</textarea>
+		        </div>
+		                
+		        <br>
+		        <div class="input-group">
+		            <div class="input-group-prepend">
+		                <label class="input-group-text" for="inputTargetDatabase">Database</label>
+		            </div>
+		            <select class="custom-select" id="inputTargetDatabase" [(ngModel)]="database">
+		                <option></option>
+		                <option *ngFor = "let db of this.databaseService.databaseArray">{{db.name}}</option>
+		            </select>
+		        </div>
+		                
+		        <br>
+		        <div class="input-group">
+		            <div class="input-group-prepend">
+		                <label for="inputAmountResults" class="input-group-text ">Results limit</label>
+		            </div>
+		            <input type="text" class="form-control"  pattern="[0-9]*" id="inputAmountResults" [(ngModel)]="resultsAmount">
+		        </div>
+            </div>
+        
+            <div class="col-md-3">
+	            <button [disabled]="database === undefined" (click)="testData()" class="btn btn-secondary btn-block">Test Sql Query</button>
+	            <br>
+	            <button [disabled]='!messageService.validateTestSuccesful' class="btn btn-secondary btn-block">Save Sql Query</button>
+                <br>
+            </div>
+        
+        </div>
+    </div>
+    
+    <br>
+    <div>
+        <h4>Query results</h4>
+        
+        
+        <div *ngIf="this.validateQueryService.missingTableColumns && this.validateQueryService.missingTableColumns.length > 0" 
+            class="alert alert-warning" role="alert">
+            SQL query did not return the following required columns: 
+            <ul>
+            <li *ngFor="let column of this.validateQueryService.missingTableColumns">
+                {{ column }}
+            </li>
+        </ul>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th *ngFor="let x of validateQueryService.dataKeyProps">{{x}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let y of validateQueryService.dataArray; let c = index">
+                        <td *ngFor="let z of y; let i = index">{{validateQueryService.dataArray[c][i]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>

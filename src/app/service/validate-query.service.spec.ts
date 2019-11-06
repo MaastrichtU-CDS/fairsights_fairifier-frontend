@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GetDatabaseService } from './get-database.service';
+import { ValidateService } from './validate-query.service';
 
-describe('GetDatabaseService', () => {
+describe('ValidateQueryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: GetDatabaseService = TestBed.get(GetDatabaseService);
+    const service: ValidateService = TestBed.get(ValidateQueryService);
     expect(service).toBeTruthy();
   });
 });
