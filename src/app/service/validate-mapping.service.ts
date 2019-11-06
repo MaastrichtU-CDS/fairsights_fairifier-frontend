@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
     providedIn: 'root'
 })
-export class EditService {
+export class ValidateMappingService {
 
     constructor(
         private http: HttpClient,

@@ -23,7 +23,7 @@ export class DatabaseService {
         return this.http.post(url, dataSource, this.options)
             .subscribe(
                 data => {
-                    this.getDatabase(),
+                    this.getDatabases(),
                     console.log('Adding Database Succesful', data),
                     this.messageService.changeMessage('Adding database ' + databaseName + ' is succesful');
                 },
@@ -35,7 +35,7 @@ export class DatabaseService {
             );
         }
 
-    getDatabase() {
+    getDatabases() {
         const extraUrl = '/datasources';
         const url = environment.apiUrl + extraUrl;
 
@@ -49,7 +49,8 @@ export class DatabaseService {
                 }
             );
     }
-
+    
+    
     putDatabasesInArray(inputArray) {
         this.databaseArray = inputArray;
     }

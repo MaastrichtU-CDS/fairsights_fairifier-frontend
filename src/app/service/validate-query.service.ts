@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ValidateService {
+export class ValidateQueryService {
 
     constructor(
         private http: HttpClient,
@@ -18,24 +18,64 @@ export class ValidateService {
     queryChanged = '';
     public currentQuery = '';
     public valueChanged;
-
+    public requiredTableColumns : Array<String>;
+    public missingTableColumns : Array<String>;
+    
     getSqlQuery() {
-        const extraUrl = '/mapping/sqlquery';
-        const totalUrl = environment.apiUrl + extraUrl;
+        const url = environment.apiUrl + '/mapping/sqlquery';
 
-        this.http.get(totalUrl, {responseType: 'text'})
+        this.http.get(url, {responseType: 'text'})
         .subscribe (
             data => (
-                this.messageService.changeMessage('Sql Query Received'),
+                this.messageService.changeMessage('SQL query received'),
                 console.log(data),
                 this.currentQuery = data
             ),
 
             error => (
                 console.log(error),
-                this.messageService.changeMessage('Sql unsuccesfully received: ' + error.message)
+                this.messageService.changeMessage('Error while retreiving SQL query: ' + error.message)
             )
         );
+    }
+    
+    getRequiredTableColumns() {
+        const url = environment.apiUrl + '/mapping/table-columns';
+        this.http.get<Array<String>>(url)
+        .subscribe (
+            data => (
+                this.messageService.changeMessage('Table columns received'),
+                console.log(data),
+                this.requiredTableColumns = data
+            ),
+
+            error => (
+                console.log(error),
+                this.messageService.changeMessage('Error while retrieving table columns: ' + error.message)
+            )
+        );
+    }
+    
+    getMissingTableColumns() {
+        if (this.requiredTableColumns) {
+            let retrievedTableColumns = this.dataKeyProps;
+            let missingTableColumns : String[] = [];
+            for (let column of this.requiredTableColumns) {
+                if (!this.isColumnPresent(column, retrievedTableColumns)) {
+                    missingTableColumns.push(column);
+                }
+            }
+            return missingTableColumns;
+        }
+    }
+    
+    isColumnPresent(requiredColumn : String, retrievedColumns : Array<String>) {
+        for (let retrievedColumn of retrievedColumns) {
+            if (requiredColumn.toLowerCase() == retrievedColumn.toLowerCase()) {
+                return true;
+            }  
+        }
+        return false;
     }
 
     convertData(dataKey) {
@@ -81,7 +121,8 @@ export class ValidateService {
                 this.messageService.changeMessage('Test Succesful'),
                 this.convertData(response),
                 this.messageService.validateTestSuccesful = true,
-                this.changeValue()
+                this.changeValue(),
+                this.missingTableColumns = this.getMissingTableColumns()
             ),
             error => (
                 this.messageService.changeMessage('Test Unsuccesful: ' + error.message),

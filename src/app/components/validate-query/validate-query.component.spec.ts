@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ValidateComponent } from './validate.component';
+import { ValidateQueryComponent } from './validate-query.component';
 
-describe('ValidateComponent', () => {
-  let component: ValidateComponent;
+describe('ValidateQueryComponent', () => {
+  let component: ValidateQueryComponent;
   let fixture: ComponentFixture<ValidateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ValidateComponent ]
+      declarations: [ ValidateQueryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValidateComponent);
+    fixture = TestBed.createComponent(ValidateQueryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
