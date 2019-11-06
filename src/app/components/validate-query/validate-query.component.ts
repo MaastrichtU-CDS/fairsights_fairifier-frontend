@@ -16,9 +16,9 @@ export class ValidateQueryComponent implements OnInit {
         public databaseService: DatabaseService
     ) { }
 
-    resultsAmount;
-    database = '';
-
+    resultsAmount = 10;
+    database;
+    
     ngOnInit() {
         this.databaseService.getDatabases();
         this.messageService.changeMessage('');
@@ -27,17 +27,9 @@ export class ValidateQueryComponent implements OnInit {
         this.validateQueryService.valueChanged = false;
         this.validateQueryService.dataArray = [];
         this.validateQueryService.dataKeyProps = [];
+        this.validateQueryService.getRequiredTableColumns();
     }
-
-    amountChanged(newAmount) {
-        this.resultsAmount = newAmount.target.value;
-    }
-
-    databaseChanged(newDatabase) {
-        this.database = newDatabase
-        this.messageService.changeMessage('New database');
-    }
-
+    
     sqlChanged(newQuery) {
         this.validateQueryService.currentQuery = newQuery.target.value;
         this.messageService.changeMessage('Query changed');
@@ -45,21 +37,19 @@ export class ValidateQueryComponent implements OnInit {
     }
 
     testData() {
-        if (this.database === undefined || this.database === "") {
-            this.database = this.databaseService.databaseArray[0].name
-        }
-        if (this.resultsAmount !== undefined && this.resultsAmount !== '' && this.database !== '') {
+        if (this.database !== undefined || this.database !== '') {
             if (this.validateQueryService.currentQuery !== undefined && this.validateQueryService.currentQuery !== '') {
                 this.validateQueryService.testSqlQuery(this.resultsAmount, this.database, this.validateQueryService.currentQuery);
             } else {
                 this.messageService.changeMessage('Please insert a Sql Query');
             }
         } else {
-            this.messageService.changeMessage('Please insert a results amount and a database');
+            this.messageService.changeMessage('Please select a database');
         }
     }
 
     saveData() {
         this.validateQueryService.saveSqlQuery();
     }
+    
 }
