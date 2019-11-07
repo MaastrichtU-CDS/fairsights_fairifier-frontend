@@ -32,9 +32,9 @@ test:
       lsb-release xdg-utils wget 
     - node_modules/.bin/ng test
     - node_modules/.bin/ng e2e
-  only:
-    - master
-    - merge_requests
+#  only:
+#    - master
+#    - merge_requests
 
 build:
   stage: build
