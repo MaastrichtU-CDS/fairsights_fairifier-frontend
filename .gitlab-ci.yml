@@ -32,7 +32,7 @@ test:
       libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 
       lsb-release xdg-utils wget 
     - node_modules/.bin/ng test
-    - node_modules/.bin/ng e2e
+#    - node_modules/.bin/ng e2e
 #  only:
 #    - master
 #    - merge_requests
