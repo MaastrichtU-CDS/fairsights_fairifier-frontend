@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EditService } from './validate-mapping.service';
+import { ValidateMappingService } from './validate-mapping.service';
 
 describe('ValidateMappingService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

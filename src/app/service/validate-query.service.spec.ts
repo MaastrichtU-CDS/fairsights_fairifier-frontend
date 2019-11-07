@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ValidateService } from './validate-query.service';
+import { ValidateQueryService } from './validate-query.service';
 
 describe('ValidateQueryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

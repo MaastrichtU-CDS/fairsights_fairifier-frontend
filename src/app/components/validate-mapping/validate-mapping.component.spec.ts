@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditComponent } from './validate-mapping.component';
+import { ValidateMappingComponent } from './validate-mapping.component';
 
 describe('ValidateMappingComponent', () => {
   let component: ValidateMappingComponent;
