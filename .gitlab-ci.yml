@@ -10,6 +10,7 @@ stages:
   - setup
   - test
   - build
+  - dockerize
   
 update-dependencies:
   stage: setup
@@ -44,3 +45,15 @@ build:
     policy: pull
   script: 
     - node_modules/.bin/ng build --prod
+    
+dockerize:
+  stage: dockerize
+  dependencies:
+    - build
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+#  only:
+#    - master   
+    
