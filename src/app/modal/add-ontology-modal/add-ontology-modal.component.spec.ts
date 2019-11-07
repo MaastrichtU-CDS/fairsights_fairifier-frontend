@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AddOntologyModalComponent } from './add-ontology-modal.component';
 
@@ -8,7 +10,9 @@ describe('AddOntologyModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddOntologyModalComponent ]
+      imports: [ ReactiveFormsModule ], 
+      declarations: [ AddOntologyModalComponent ],
+      providers: [ NgbActiveModal ]
     })
     .compileComponents();
   }));
