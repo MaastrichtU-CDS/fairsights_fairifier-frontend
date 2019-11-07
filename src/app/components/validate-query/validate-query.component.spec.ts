@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 
 import { ValidateQueryComponent } from './validate-query.component';
 
@@ -8,6 +10,7 @@ describe('ValidateQueryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports : [ HttpClientTestingModule, FormsModule ],
       declarations: [ ValidateQueryComponent ]
     })
     .compileComponents();

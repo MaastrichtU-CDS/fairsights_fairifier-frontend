@@ -9,7 +9,7 @@
                     <div class="input-group">
                         <span class="input-gdiaroup-text w-100">Definitions</span>
                     </div>
-                    <textarea [disabled]='!messageService.validateSaveSuccesful' class="form-control" rows="25" aria-label="With textarea" (change)="changeMappingDefinitions($event)">{{editService.mappingDefinitionChanged}}</textarea>
+                    <textarea [disabled]='!messageService.validateSaveSuccesful' class="form-control" rows="25" aria-label="With textarea" (change)="changeMappingDefinitions($event)">{{validateMappingService.mappingDefinitionChanged}}</textarea>
                 </div>  
             </div>
         </div>
@@ -30,7 +30,7 @@
                                     </thead>
                                     <tbody>
                                         
-                                                <tr *ngFor="let x of editService.triplesTestResult; let i = index">
+                                                <tr *ngFor="let x of validateMappingService.triplesTestResult; let i = index">
                                                     <td>{{i + 1}}</td>
                                                     <td>{{x.subject}}</td>
                                                     <td>{{x.predicate}}</td>
@@ -48,7 +48,7 @@
         <div class="col-md-3">
             <button [disabled]='!messageService.validateSaveSuccesful' (click)="testMappingDefinitions()" class="btn btn-secondary btn-block">Test Definitions</button>
             <br>
-            <button [disabled]='!editService.testSuccesful' (click)="saveMappingDefinitions()" class="btn btn-secondary btn-block">Save Definitions</button>
+            <button [disabled]='!validateMappingService.testSuccesful' (click)="saveMappingDefinitions()" class="btn btn-secondary btn-block">Save Definitions</button>
             <br>
 
             <div class="input-group">
