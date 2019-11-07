@@ -6,7 +6,7 @@ describe('ValidateMappingService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: EditService = TestBed.get(EditService);
+    const service: ValidateMappingService = TestBed.get(ValidateMappingService);
     expect(service).toBeTruthy();
   });
 });

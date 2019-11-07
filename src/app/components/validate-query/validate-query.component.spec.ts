@@ -4,7 +4,7 @@ import { ValidateQueryComponent } from './validate-query.component';
 
 describe('ValidateQueryComponent', () => {
   let component: ValidateQueryComponent;
-  let fixture: ComponentFixture<ValidateComponent>;
+  let fixture: ComponentFixture<ValidateQueryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
