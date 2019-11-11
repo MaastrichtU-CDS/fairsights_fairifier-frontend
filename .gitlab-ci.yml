@@ -14,12 +14,16 @@ stages:
   
 update-dependencies:
   stage: setup
+  tags:
+    - build
   script:
-  - npm update @angular/cli
-  - npm update
+    - npm update @angular/cli
+    - npm update
 
 test:
   stage: test
+  tags:
+    - build
   cache: 
     paths:
       - node_modules/
@@ -39,6 +43,8 @@ test:
 
 build:
   stage: build
+  tags:
+    - build
   cache: 
     paths:
       - node_modules/
