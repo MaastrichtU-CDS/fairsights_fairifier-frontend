@@ -49,6 +49,8 @@ build:
 dockerize:
   stage: dockerize
   image: docker:latest
+  tags: 
+    - docker
   dependencies:
     - build
   script:
