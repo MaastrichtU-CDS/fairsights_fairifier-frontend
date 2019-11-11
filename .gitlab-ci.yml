@@ -1,11 +1,5 @@
 image: node:latest
 
-# This folder is cached between builds
-# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
-cache:
-  paths:
-  - node_modules/
-
 stages:
   - setup
   - test
@@ -16,6 +10,10 @@ update-dependencies:
   stage: setup
   tags:
     - build
+  cache:
+    paths:
+      - node_modules/
+    policy: pull-push
   script:
     - npm update @angular/cli
     - npm update
